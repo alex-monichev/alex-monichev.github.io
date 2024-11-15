@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/2.0.3/showdown.min.js"></script>
-    <title>Alex's GitHub</title>
+    <title>Alex's Notes</title>
   </head>
   <body>
-    <script>
-      async function loadMarkdown( ) {
-        try {
-          // Fetch the Markdown file
-          const response = await fetch('notes/html.md');
-          const markdownText = await response.text();
-
-          // Convert Markdown to HTML
-          const converter = new showdown.Converter();
-          const htmlText = converter.makeHtml(markdownText);
-
-          // Insert the HTML into the page
-          document.getElementById('content').innerHTML = htmlText;
-        } catch (error) {
-          console.error("Error loading Markdown file:", error);
-        }
-      }
-    </script>
-    <div id="content">
-        <h1><p>Hello world! (How iconic)</p></h1>
-      This is my first github page. This page is for my notes on three major languages: 
-      <a href="#" onclick="loadMarkdown()">HTML</a>, CSS and JS.
+    <div>
+      <!--Hello-->
+      <h1><p>Hello world! (How iconic)</p></h1>
+      <hr>
+      <p>This is my first github page. This page is for my notes on three major languages: 
+      HTML, CSS and <a href="notes/js-notes/js-notes.html", target="_self">JS</a>.</p>
     </div>
   </body>
 </html>

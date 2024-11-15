@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Notes</title>
+    <link rel="stylesheet" href="notes/js-notes/js-notes-styles.css">
+</head>
+<body>
+    <div>
+        <h1>Variables</h1>
+        <p>Variable allows <strong>repeated</strong> access to <strong>values</strong></p>
+
+        <h2>How to Name Variables</h2>
+        <ul>
+        <li><strong><u>P</u>ascal<u>C</u>ase</strong>: used for <strong>Types</strong> and <strong>Classes</strong>.</li>
+        <li><strong>DB_PASSWORD</strong>: used for values <strong>known before the launch</strong> of an app/program and are <strong>unchangable</strong>.</li>
+        <li><strong><u>c</u>amel<u>C</u>ase</strong>: used for <strong>variables</strong></li>
+        </ul>
+
+        <p>Variable names should be <strong>understandable</strong>. (Bad examples: <del>foo, bar, test, xyz</del>)</p>
+
+        <h2>Type system</h2>
+        <ul>
+        <li><strong>Static</strong> - Variable type is determined in code with <em>keywords</em> and <strong>is checked by compiler</strong>. Languages that use Static typing: <strong>C++, C, Java</strong></li>
+        <li><strong>Dynamic</strong> - Variable type is determined by its <em>value</em> in the <strong>moment of code execution</strong>. Languages that use Dynamic typing: <strong>JS, Python</strong></li>
+        </ul>
+
+        <h2>Object Types</h2>
+
+        <h3>Primitive Types</h3>
+        <p>These types are stored <strong>directly in the variable</strong> and hold their actual values. When you assign a primitive type to a variable, it contains the value itself. If you copy a primitive value to another variable, you create a separate copy.</p>
+        <p>These types are:</p>
+        <ul>
+        <li>String</li>
+        <li>Boolean</li>
+        <li>Number</li>
+        <li>Null</li>
+        <li>Undefined</li>
+        <li>Symbol</li>
+        </ul>
+
+        <h3>Reference Types</h3>
+        <p>These types are stored <strong>as references to their values</strong>. When you assign a reference type to a variable, the variable holds a reference (or a pointer) to the location in memory where the value is stored. If you <em>copy</em> a reference type to another variable, <strong>both variables point to the same object in memory</strong>.</p>
+        <p>These types are:</p>
+        <ul>
+        <li>Object</li>
+        <li>Array</li>
+        <li>Function</li>
+        </ul>
+
+        <h2>Variable initializing</h2>
+        <pre><table>
+            <th>let</th>
+            <th>const</th>
+            <th>var</th>
+        </table></pre>
+
+        <p>There's two ways to initialize a variable:</p>
+        <ul>
+        <li><strong>Initializing</strong> (<code>let a</code>): permitted only for modifiable variables.</li>
+        <li><strong>Initializing and assigning</strong> (<code>const c=10</code>): the only way to initialize a constant variable. If tried to use only <strong>initializing</strong>, it will throw a SyntaxError: Missing initializer in const declaration.</li>
+        </ul>
+
+    </div>
+</body>
+</html>
