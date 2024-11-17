@@ -1,7 +1,6 @@
 // Dark/Light mode
 
-const btn = document.getElementById("dark-toggle");
-const themeIcons = document.querySelectorAll(".icon");
+const btn = document.getElementById("theme-toggle");
 const currentTheme = localStorage.getItem("theme");
 
 if (currentTheme === "dark") {
@@ -12,35 +11,29 @@ if (currentTheme === "dark") {
 
 btn.addEventListener("click", function () {
     setTheme();
-})
-
-btn2.addEventListener("click", function () {
-    setTheme();
-})
+});
 
 function setTheme() {
     let currentTheme = document.body.getAttribute("theme");
-     if (currentTheme === "dark") {
+    if (currentTheme === "dark") {
         setLightMode();
-     } else {
+    } else {
         setDarkMode();
-     }
+    }
 }
 
 function setDarkMode() {
     document.body.setAttribute("theme", "dark");
     localStorage.setItem("theme", "dark");
 
-    themeIcons.forEach((icon) => {
-        icon.src = icon.getAttribute("scr-dark")
-    })
+    // Fix the typo
+    btn.src = btn.getAttribute("src-dark");
 }
 
 function setLightMode() {
     document.body.removeAttribute("theme");
     localStorage.setItem("theme", "light");
 
-    themeIcons.forEach((icon) => {
-        icon.src = icon.getAttribute("scr-light")
-    })
+    // Fix the typo
+    btn.src = btn.getAttribute("src-light");
 }
