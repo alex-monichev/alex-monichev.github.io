@@ -282,6 +282,244 @@ const userProfile = {
 console.log(userProfile.address.city) // Output: 'Somewhere'</code></pre>
         
     </div>
+    <div>
+        <h1>Global Objects</h1>
+
+    <p>In JavaScript, global objects are objects that provide a <strong>global scope</strong> where properties, functions, and variables can be accessed from anywhere in the code. The global object <strong>varies depending on the environment</strong> (like a web browser or Node.js). Here’s a look at the main global objects and how they work:</p>
+
+    <h2><code>window</code></h2>
+
+    <p><strong>In web browsers</strong>, the global object is called <code>window</code>. It <strong>represents the browser's window</strong> in which your script runs. The window object provides a range of properties and methods for <strong>controlling the browser, interacting with the Document Object Model (DOM), and accessing global variables and functions.</strong></p>
+
+    <h2><code>global</code></h2>
+
+    <p><strong>In Node.js</strong>, the global object is called <code>global</code>. Unlike browsers, <strong>Node.js does not have a window object</strong>. The global object in Node.js has similar functionality, allowing you to <strong>define variables, functions, or classes that should be accessible across the entire environment.</strong></p>
+
+    <h2><code>globalThis</code></h2>
+
+    <p>Introduced in <strong>ECMAScript 2020</strong>, <code>globalThis</code> provides a <strong>universal</strong> way to access the global object <strong>across different environments</strong> (like browsers, Node.js, and others). <code>globalThis</code> refers to the global object regardless of where the code runs, making it a more standardized way to write cross-platform JavaScript.</p>
+
+    <p>Using <code>globalThis</code> is particularly helpful <strong>when writing code that runs in both browsers and Node.js</strong>, as it provides a consistent way to access the global scope across different environments.</p>
+
+    <h2>Properties</h2>
+
+    <p>It is possible to call properties of global objects <strong>without needing to use dot notation with <code>window</code>, <code>global</code>, or <code>globalThis</code>.</strong></p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Full Syntax</th>
+                <th>Simplified Syntax</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><pre><code>window.console.log(10)</code></pre><br><pre><code>global.console.log(10)</code></pre><br><pre><code>globalThis.console.log(10)</code></pre></td>
+                <td><pre><code>console.log(10)</code></pre></td>
+            </tr>
+        </tbody>
+    </table>
     <hr>
+
+    </div>
+    <div>
+        <h1>Methods</h1>
+
+        <p>A method is a <strong>property</strong> of an object, which's value is a <strong>function</strong>.</p>
+
+        <h2>Methods VS Properties</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th><code>myCity.city</code></th>
+                    <th><code>myCity.cityGreeting()</code></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Accessing value</strong> of a property*</td>
+                    <td><strong>Calling</strong> a function</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><em>*Accessing value</em> of a <strong>method</strong> returns its <strong>structure</strong>.</p>
+
+        <blockquote>
+            <p>If a property that <strong>isn't a method/function is called</strong>, an <strong>error</strong> is thrown: <code>TypeError: ... is not a function</code></p>
+        </blockquote>
+
+        <hr>
+    </div>
+    <div>
+        <h1>JSON</h1>
+
+        <p>JSON (<strong><u>J</u>ava <u>S</u>cript <u>O</u>bject <u>N</u>otation</strong>) is a format of <strong>exchange data between computers</strong> over the Web.</p>
+
+        <p>Examples of data represented in JSON:</p>
+
+        <ul>
+            <li><em>CSS style tables</em></li>
+            <li><em>Images</em></li>
+            <li><em>Text files</em></li>
+        </ul>
+
+        <h2>JSON Notation</h2>
+
+        <h3>Object Notation</h3>
+
+        <p>JSON objects are commonly used in JavaScript to create objects and are suitable for <strong><em>human</em></strong> readability. They are often referred to as <strong>parsed JSON</strong> when processed in JavaScript.</p>
+
+        <p><strong>Syntax Example:</strong></p>
+
+        <pre><code>{
+    "userId":1,
+    "id":1,
+    "title":"Test Title",
+    "Status":{
+        "completed": false
+    }
+}</code></pre>
+
+        <h3>String Notation</h3>
+
+        <p>JSON in string form is typically used for <strong><em>computer</em></strong> readability. It is often referred to as <strong>stringified JSON</strong>. It is often the format that is transferred between systems, and it must be parsed into an object for use in JavaScript.</p>
+
+        <p><strong>Syntax:</strong></p>
+
+        <pre><code>{"userId":1, "id":1, "title":"Test Title", "Status":{"completed": false}}</code></pre>
+
+        <h2>Methods</h2>
+
+        <ul>
+            <li><code>JSON.parse()</code>: Transforms <strong>JSON string</strong> into a <strong>JS object</strong>.</li>
+            <li><code>JSON.stringify()</code>: Transforms <strong>JS object</strong> into a <strong>JSON string</strong>.</li>
+        </ul>
+        <hr>
+    </div>
+    <div>
+        <h1>Mutations in JS</h1>
+
+        <p>In JavaScript, <strong>mutation</strong> refers to <strong>changing the state or value of an object or array</strong>. Unlike <strong>primitive values</strong> (such as numbers, strings, and booleans), which are <strong>immutable</strong> (meaning they cannot be changed directly), <strong>objects and arrays are mutable</strong>, meaning their properties and elements <strong>can be altered</strong>.</p>
+
+        <h2>Mutating Object</h2>
+
+        <p>In an object, properties and elements can be <strong>mutated by editing, adding or removing</strong> properties.</p>
+
+        <h3>Examples</h3>
+
+        <h4><em>Editing</em> property mutation:</h4>
+
+        <pre><code>const person = { name: 'Alice', age: 25 };
+person.age = 26;  // Mutating the 'age' property of the object
+console.log(person.age);  // Output: 26 </code></pre>
+
+        <h4><em>Adding</em> and <em>removing</em> property mutation:</h4>
+
+        <pre><code>const user = { name: 'John' };
+user.age = 30;  // Adding a new property to the object
+console.log(user);  // Output: { name: 'John', age: 30 }
+
+delete user.name;  // Removing a property from the object
+console.log(user);  // Output: { age: 30 } </code></pre>
+
+        <h2>Mutating Array</h2>
+
+        <p>Same as in an object, array can be <strong>mutated by editing, adding and removing</strong> elements and changing array's <strong>length</strong>.</p>
+
+        <h3>Examples</h3>
+
+        <h4><em>Editing</em> and <em>adding</em> property mutation:</h4>
+
+        <pre><code>const numbers = [1, 2, 3];
+numbers[0] = 10;  // Mutating the first element of the array
+console.log(numbers);  // Output: [10, 2, 3]
+
+numbers.push(4);  // Adding an element to the array
+console.log(numbers);  // Output: [10, 2, 3, 4]</code></pre>
+
+        <h4>Editing array <em>length</em> mutation:</h4>
+
+        <pre><code>const fruits = ['apple', 'banana', 'cherry'];
+fruits.length = 2;  // Mutating the array by shortening it
+console.log(fruits);  // Output: ['apple', 'banana']</code></pre>
+
+        <h2>Mutation Functions</h2>
+
+        <p>In JavaScript, when you pass an object or an array to a <strong>function</strong>, the function has <strong>access to the original object or array</strong> (because objects and arrays are <strong>passed by reference</strong>). If the function mutates the object or array, the <strong>changes will be reflected outside the function as well.</strong></p>
+
+        <h3>Example:</h3>
+
+        <pre><code>function updateName(person) {
+    person.name = 'Bob';  // Mutating the object
+}
+
+const person = { name: 'Alice' };
+updateName(person);
+console.log(person.name);  // Output: Bob</code></pre>
+
+        <h2>Avoiding Mutations</h2>
+
+        <p>Example object for this section:</p>
+
+        <pre><code>const person = {
+    name: 'Bob',
+    age: 21
+};</code></pre>
+
+        <h3><code>Object.assign({}, person)</code></h3>
+        <p><code>assign</code> - creates a <strong>new</strong> object.<br>
+        <code>{}</code> - <strong>writes the value</strong>.<br>
+        <code>person</code> - object that needs to be copied.</p>
+
+        <blockquote>
+            <p>Con: <strong>Embedded references are still copied.</strong></p>
+        </blockquote>
+
+        <h3><code>= {...person}</code></h3>
+        <p><code>{______}</code> - creates a new object.<br>
+        <code>...</code> - <strong>`Spread`</strong> operator, separating object on properties<br>
+        <code>person</code> - object that needs to be copied.</p>
+
+        <blockquote>
+            <p>Con: <strong>Embedded references are still copied.</strong></p>
+        </blockquote>
+
+        <h3><code>JSON.parse(JSON.stringify(person))</code></h3>
+        <p><code>JSON.stringify(person)</code> - Converts the <code>person</code> <em>object to a JSON string</em>.<br>
+        <code>JSON.parse()</code> - Parses the <em>JSON string back into a <strong>new</strong> object</em>.</p>
+
+        <blockquote>
+            <p>Pro: Embedded references are <strong>NOT</strong> copied.<br>
+            Con: <strong>Does not preserve functions or non-JSON data types</strong> (like <code>undefined</code>, <code>RegExp</code>, or <code>Date</code>).</p>
+        </blockquote>
+
+        <h2>Summary</h2>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Avoid method</th>
+                    <th>Embedded references?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>Object.assign({}, person)</code></td>
+                    <td>☑️ (Shallow copy)</td>
+                </tr>
+                <tr>
+                    <td><code>= {...person}</code></td>
+                    <td>☑️ (Shallow copy)</td>
+                </tr>
+                <tr>
+                    <td><code>JSON.parse(JSON.stringify(person))</code></td>
+                    <td>❎ (Deep copy, no functions or non-JSON data)</td>
+                </tr>
+            </tbody>
+        </table>
+    <hr>
+    </div>
 </body>
 </html>

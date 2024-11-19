@@ -2,15 +2,19 @@
 :root {
     --background-color: rgb(227, 227, 227);
     --code-background-color: rgba(163, 163, 163, 0.416);
+    --blockquote: rgb(232, 237, 159);
     --color: #2b2b2b;
     --code-color: rgb(116, 116, 116);
+    --code-ponctuation-color: rgb(0, 0, 0);
 }
 /* Dark Mode */
 [theme="dark"] {
     --background-color: rgb(43, 43, 43);
     --code-background-color: rgba(163, 163, 163, 0.416);
+    --blockquote: rgb(86, 88, 59);
     --color: rgba(227, 227, 227, 0.909);
     --code-color: rgb(205, 205, 205);
+    --code-ponctuation-color: rgb(255, 255, 255);
 }
 body {
     background-color: var(--background-color);
@@ -45,6 +49,10 @@ th, td {
     top: -50px;
     right: 1px;
 }
+blockquote {
+    background-color: var(--blockquote);
+}
+
 
 /* === JS Code Block Styles === */
     pre code.hljs{
@@ -52,49 +60,34 @@ th, td {
         overflow-x:auto;
         padding:1em}
     code.hljs{
-        padding:3px 5px
-    }
+        padding:3px 5px}
     .hljs{
         background: var(--code-background-color);
-        color:var(--code-color)
-    }
+        color:var(--code-color)}
     .hljs-comment{
-        color:#049f09
-    }
+        color:#049f09}
     .hljs-punctuation, .hljs-tag{
-        color:#444a
-    }
+        color:var(--code-ponctuation-color)}
     .hljs-tag .hljs-attr,.hljs-tag .hljs-name{
-        color:#444
-    }
+        color:#444}
     .hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{
-        font-weight:700
-    }
+        font-weight:700}
     .hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-string,.hljs-template-tag,.hljs-type{
-        color:#800
-    }
+        color:#800}
     .hljs-section,.hljs-title{
-        color:#800;font-weight:700
-    }
+        color:#800;font-weight:700}
     .hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{
-        color:#ab5656
-    }
+        color:#ab5656}
     .hljs-literal{
-        color:#695
-    }
+        color:#695}
     .hljs-addition,.hljs-built_in,.hljs-bullet,.hljs-code{
-        color:#397300
-    }
+        color:#397300}
     .hljs-meta{
-        color:#1f7199
-    }
+        color:#1f7199}
     .hljs-meta .hljs-string{
-        color:#38a
-    }
+        color:#38a}
     .hljs-emphasis{
-        font-style:italic
-    }
+        font-style:italic}
     .hljs-strong{
-        font-weight:700
-    }
+        font-weight:700}
 /* === */

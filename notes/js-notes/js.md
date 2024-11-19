@@ -347,7 +347,6 @@ JSON in string form is typically used for **_computer_** readability. It is ofte
 ***
 
 # Mutations in JS
-# Mutations in JS
 
 In JavaScript, **mutation** refers to **changing the state or value of an object or array**. Unlike **primitive values** (such as numbers, strings, and booleans), which are **immutable** (meaning they cannot be changed directly), **objects and arrays are mutable**, meaning their properties and elements **can be altered**.
 
