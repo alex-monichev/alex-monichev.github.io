@@ -10,6 +10,10 @@
     <!-- and it's easy to individually load additional languages -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true});
+    </script>
 <script>hljs.highlightAll();</script>
 </head>
 <body>
@@ -520,6 +524,204 @@ console.log(person.name);  // Output: Bob</code></pre>
             </tbody>
         </table>
     <hr>
+    </div>
+    <div>
+        <h1>Functions</h1>
+    <p>Function is a <strong>block of code</strong> that can be used <strong>repeatedly</strong>. <strong>Function is an object</strong></p>
+    <p>Functions can be:</p>
+    <ul>
+        <li>Named/<em>Anonymous</em></li>
+        <li><strong>Assigned to a variable</strong></li>
+        <li><strong>Argument to another function</strong></li>
+        <li><em>Method</em></li>
+    </ul>
+
+    <h3>Syntax/Structure</h3>
+    <pre>
+<code>function myFn(a, b) {
+  let c;
+  a = a + 1;
+  c = a + b;
+  return c;
+}
+</code>
+    </pre>
+    <ul>
+        <li><code>myFn</code> - name of the function in <strong>camelCase</strong>.</li>
+        <li><code>a, b</code> - <strong>parameters</strong>, variables in the functions.</li>
+        <li><code>return c</code> - <strong>result</strong>.</li>
+    </ul>
+
+    <p><strong>Warning:</strong></p>
+    <ul>
+        <li><strong>Function returns undefined if it does not contain a return.</strong></li>
+        <li><strong>It is <em>not recommended</em> to mutate external objects inside functions.</strong></li>
+    </ul>
+
+    <h2>Avoiding Mutation Inside Function</h2>
+    <p>Mutation can be avoided by creating an object's copy inside the function and returning the copy as a result.</p>
+
+    <p><strong>Examples:</strong></p>
+    <p><strong><em>INCORRECT</em></strong> (Mutating the original object):</p>
+    <pre>
+<code>function increaseAge(person) {
+  person.age += 1;
+  return person;
+}
+</code>
+    </pre>
+
+    <p><strong><em>CORRECT</em></strong> (Creating a copy to avoid mutation):</p>
+    <pre>
+<code>function increaseAge(person) {
+  const personUpdate = { ...person };
+  personUpdate.age += 1;
+  return personUpdate;
+}
+</code>
+    </pre>
+
+    <h2><em>Callback</em> Functions</h2>
+    <p>A <strong>callback function</strong> is <strong>a function that is passed as an argument to another function</strong> and is executed after the completion of some other operation.</p>
+
+    <p><strong>Example:</strong></p>
+    <pre>
+<code>function anotherFunction() {
+  console.log("Some code here");
+}
+function fnWithCallback(callbackFunction) {
+  callbackFunction();
+}
+fnWithCallback(anotherFunction);
+</code>
+    </pre>
+
+    <h2>Rules of Working with Functions</h2>
+    <pre class="mermaid">
+        graph TD
+            A[**1. Naming** function depending on its task]
+            B[**2. One function** does **one task**]
+            B --> D[**single purpose**]
+            C[**3. Not** recommended to **modify external objects**]
+        style D fill:#3e79bd, stroke: #000000, stroke-width:2px
+    </pre>
+    <hr>
+    </div>
+    <div>
+        <h1>Scopes</h1>
+    <p>Scopes define borders of <strong>availability of a variable</strong>.</p>
+    <pre class="mermaid">
+    graph TD
+    A[**Global** Scope]
+    B[**Function** Scope]
+    C[**Block** Scope]
+    A --> B --> C 
+    style A fill:#c4a9b5,stroke:#000000,stroke-width:2px
+    style B fill:#bfb071,stroke:#000000,stroke-width:2px
+    style C fill:#87abb0,stroke:#000000,stroke-width:2px
+    </pre>
+
+    <h2>Global</h2>
+    <p>Global scope and variables created there are <strong>known throughout all the code.</strong></p>
+
+    <h2>Function</h2>
+    <p>Function scope is... well, in a function and <strong>known inside the function.</strong> <code>var</code> variables are function-scoped.</p>
+
+    <h2>Block</h2>
+    <p>Block scope is between <code>{}</code>. <code>let</code> and <code>const</code> are block-scoped, meaning they are only accessible inside the block where they are declared.</p>
+    <blockquote>
+        Function scope is a block scope, since in its syntax, <code>function(){}</code>, there're <code>{}</code>.
+    </blockquote>
+    <p><strong>Statement above is false. Here's an example:</strong></p>
+    <pre>
+<code>function testFunction() {
+  var x = 10;
+  if (true) {
+    var y = 20; // 'var' is function-scoped, so 'y' is accessible throughout the function
+  }
+  console.log(x); // 10
+  console.log(y); // 20 (accessible here, because 'y' is function-scoped, not block-scoped)
+}
+</code>
+    </pre>
+    <p>In the above example, both <code>x</code> and <code>y</code> are function-scoped, <strong>even though <code>y</code> is declared inside a block</strong> (the <code>if</code> statement).</p>
+
+    <h3>Example</h3>
+    <pre>
+<code>let a;
+let b;
+
+function myFn() {
+  let c;
+}
+</code>
+    </pre>
+    <ul>
+        <li><code>myFn</code> knows <code>a</code>, <code>b</code>, <u><code>c</code></u></li>
+        <li><code>global</code> knows <code>a</code>, <code>b</code>, <em>_</em></li>
+    </ul>
+
+    <pre class="mermaid">
+graph TD
+%%{
+    init: {
+      'themeVariables': {
+        'lineColor': '#ffffff'
+      }
+    }
+  }%%
+    A[**Global**]
+    B[**myFn**]
+    B --> |a?| A
+    A --> |a| B
+    style A fill:#9c848f,stroke:#000000,stroke-width:2px
+    style B fill:#7c9da1,stroke:#000000,stroke-width:2px
+    </pre>
+
+    <pre class="mermaid">
+graph TD
+    A[**Global**]
+    B[**myFn**]
+    A --x |c?| B
+    style A fill:#9c848f,stroke:#000000,stroke-width:2px
+    style B fill:#7c9da1,stroke:#000000,stroke-width:2px
+    </pre>
+
+    <h2>Rules of Working with Variables</h2>
+    <pre class="mermaid">
+graph TD
+    A[**1. Initialize** variable before use]
+    B[**2.** Try to use **const everywhere if possible**]
+    C[**3. Not** recommended to **modify external variables inside functions**]
+    </pre>
+
+    <h2>'use strict'</h2>
+    <p>To avoid changing variables outside functions, use <code>'use strict'</code> syntax.</p>
+
+    <p><strong>Bad example</strong>, where variable is changed inside the function:</p>
+    <pre>
+<code>function myFn() {
+  a = true;
+  console.log(a);
+}
+myFn();
+
+console.log(a); // true
+</code>
+    </pre>
+
+    <p><strong><code>'use strict'</code> example:</strong></p>
+    <pre>
+<code>'use strict';
+function myFn() {
+  a = true; // ReferenceError:
+  console.log(a);
+}
+myFn();
+
+console.log(a); // Normal value of a
+</code>
+    </pre>
     </div>
 </body>
 </html>

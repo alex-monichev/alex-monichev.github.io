@@ -16,6 +16,11 @@
     --code-color: rgb(205, 205, 205);
     --code-ponctuation-color: rgb(255, 255, 255);
 }
+
+.wrong {
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
 body {
     background-color: var(--background-color);
     color: var(--color);
@@ -37,9 +42,6 @@ table, th, td {
 }
 th, td {
     background-color: rgba(0, 255, 251, 0.3);
-}
-.wrong {
-    background-color: rgba(255, 0, 0, 0.3);
 }
 #theme-toggle {
     transform: scale(0.2);
