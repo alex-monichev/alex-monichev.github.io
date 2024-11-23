@@ -599,6 +599,13 @@ fnWithCallback(anotherFunction);
     <h2>Rules of Working with Functions</h2>
     <pre class="mermaid">
         graph TD
+        %%{
+            init: {
+            'themeVariables': {
+                'lineColor': '#949494'
+            }
+            }
+        }%%
             A[**1. Naming** function depending on its task]
             B[**2. One function** does **one task**]
             B --> D[**single purpose**]
@@ -611,6 +618,13 @@ fnWithCallback(anotherFunction);
         <h1>Scopes</h1>
     <p>Scopes define borders of <strong>availability of a variable</strong>.</p>
     <pre class="mermaid">
+        %%{
+            init: {
+            'themeVariables': {
+                'lineColor': '#949494'
+            }
+            }
+        }%%
     graph TD
     A[**Global** Scope]
     B[**Function** Scope]
@@ -633,43 +647,39 @@ fnWithCallback(anotherFunction);
         Function scope is a block scope, since in its syntax, <code>function(){}</code>, there're <code>{}</code>.
     </blockquote>
     <p><strong>Statement above is false. Here's an example:</strong></p>
-    <pre>
-<code>function testFunction() {
-  var x = 10;
-  if (true) {
-    var y = 20; // 'var' is function-scoped, so 'y' is accessible throughout the function
-  }
-  console.log(x); // 10
-  console.log(y); // 20 (accessible here, because 'y' is function-scoped, not block-scoped)
-}
-</code>
-    </pre>
+    <pre><code>function testFunction() {
+    var x = 10;
+    if (true) {
+        var y = 20; // 'var' is function-scoped, so 'y' is accessible throughout the function
+    }
+    console.log(x); // 10
+    console.log(y); // 20 (accessible here, because 'y' is function-scoped, not block-scoped)
+    }
+    </code></pre>
     <p>In the above example, both <code>x</code> and <code>y</code> are function-scoped, <strong>even though <code>y</code> is declared inside a block</strong> (the <code>if</code> statement).</p>
 
     <h3>Example</h3>
-    <pre>
-<code>let a;
-let b;
+    <pre><code>let a;
+    let b;
 
-function myFn() {
-  let c;
-}
-</code>
-    </pre>
+    function myFn() {
+    let c;
+    }
+    </code></pre>
     <ul>
         <li><code>myFn</code> knows <code>a</code>, <code>b</code>, <u><code>c</code></u></li>
         <li><code>global</code> knows <code>a</code>, <code>b</code>, <em>_</em></li>
     </ul>
 
     <pre class="mermaid">
-graph TD
-%%{
-    init: {
-      'themeVariables': {
-        'lineColor': '#ffffff'
-      }
-    }
-  }%%
+    graph TD
+    %%{
+        init: {
+        'themeVariables': {
+            'lineColor': '#949494'
+        }
+        }
+    }%%
     A[**Global**]
     B[**myFn**]
     B --> |a?| A
@@ -679,7 +689,14 @@ graph TD
     </pre>
 
     <pre class="mermaid">
-graph TD
+    graph TD
+    %%{
+        init: {
+        'themeVariables': {
+            'lineColor': '#949494'
+        }
+        }
+    }%%
     A[**Global**]
     B[**myFn**]
     A --x |c?| B
@@ -689,7 +706,7 @@ graph TD
 
     <h2>Rules of Working with Variables</h2>
     <pre class="mermaid">
-graph TD
+    graph TD
     A[**1. Initialize** variable before use]
     B[**2.** Try to use **const everywhere if possible**]
     C[**3. Not** recommended to **modify external variables inside functions**]
@@ -699,29 +716,366 @@ graph TD
     <p>To avoid changing variables outside functions, use <code>'use strict'</code> syntax.</p>
 
     <p><strong>Bad example</strong>, where variable is changed inside the function:</p>
-    <pre>
-<code>function myFn() {
-  a = true;
-  console.log(a);
-}
-myFn();
+    <pre><code>function myFn() {
+    a = true;
+    console.log(a);
+    }
+    myFn();
 
-console.log(a); // true
-</code>
+    console.log(a); // true
+    </code>
     </pre>
 
     <p><strong><code>'use strict'</code> example:</strong></p>
-    <pre>
-<code>'use strict';
-function myFn() {
-  a = true; // ReferenceError:
-  console.log(a);
-}
-myFn();
+    <pre><code>'use strict';
+    function myFn() {
+    a = true; // ReferenceError:
+    console.log(a);
+    }
+    myFn();
 
-console.log(a); // Normal value of a
-</code>
-    </pre>
+    console.log(a); // Normal value of a
+    </code></pre>
+    </div>
+    <div>
+        <h1>Operators</h1>
+        <p>An operator is a <strong>built-in</strong> function or <em>symbol</em> that performs operations on one or more values. Operators are essential to JavaScript for <strong>calculations, comparisons, logical checks, and value assignments</strong>.</p>
+        <p>There are many operators, grouped into <strong>5 types</strong>:</p>
+        <ul>
+            <li>Arithmetic</li>
+            <li>Comparison</li>
+            <li>Logical</li>
+            <li>Assignment</li>
+            <li>Text</li>
+        </ul>
+    
+        <h2>Arithmetic Operators</h2>
+        <ul>
+            <li><code>+</code> : Addition</li>
+            <li><code>-</code> : Subtraction</li>
+            <li><code>*</code> : Multiplication</li>
+            <li><code>/</code> : Division</li>
+        </ul>
+    
+        <h2>Comparison Operators</h2>
+        <ul>
+            <li><code>==</code> : Equal to</li>
+            <li><code>===</code> : <em>Strict</em> Equal to</li>
+            <li><code>!=</code> : <em>Not</em> Equal to</li>
+            <li><code>!==</code> : <em>Strict Not</em> Equal to</li>
+            <li><code>&lt;</code> : Less than</li>
+            <li><code>&gt;</code> : Greater than</li>
+            <li><code>&lt;=</code> : Less than or equal to</li>
+            <li><code>&gt;=</code> : Greater than or equal to</li>
+        </ul>
+    
+        <h2>Logical Operators</h2>
+        <ul>
+            <li><code>!</code> : Not</li>
+            <li><code>&&</code> : And</li>
+            <li><code>||</code>: Or</li>
+        </ul>
+        <blockquote>
+            <strong>Note:</strong> <code>!</code> returns a boolean, while <code>&&</code> and <code>||</code> return the value of one of the operands.
+        </blockquote>
+    
+        <h2>Assignment Operators</h2>
+        <ul>
+            <li><code>=</code> : Assignment</li>
+            <li><code>+=</code> : Addition and assignment</li>
+            <li><code>-=</code> : Subtraction and assignment</li>
+            <li><code>*=</code> : Multiplication and assignment</li>
+            <li><code>/=</code> : Division and assignment</li>
+        </ul>
+    
+        <h2>Text/String Operators</h2>
+        <ul>
+            <li><code>typeof</code> : Checks data type of variable</li>
+            <li><code>instanceof</code> : Checks if a variable is an instance of a specific class</li>
+            <li><code>new</code> : Creates a new instance</li>
+            <li><code>delete</code> : Deletes an instance</li>
+            <li><code>...</code> : Spread/separate object on properties</li>
+        </ul>
+    
+        <h2>Operands</h2>
+        <p>Operands are values on which the operations make changes.</p>
+    
+        <h3>Types of Operators</h3>
+        <ul>
+            <li><strong>Unary</strong> operators: Operate on <strong>one</strong> operand.</li>
+            <li><strong>Binary</strong> operators: Operate on <strong>two</strong> operands.</li>
+            <li><strong>Ternary</strong> operators: Operate on <strong>three</strong> operands.</li>
+        </ul>
+    
+        <h2>Ways of Writing</h2>
+        <ul>
+            <li><strong>Infix:</strong> Between operands</li>
+            <ul>
+                <li><code>a = true</code></li>
+                <li><code>a + b</code></li>
+            </ul>
+            <li><strong>Prefix:</strong> Before an operand</li>
+            <ul>
+                <li><code>++a</code></li>
+                <li><code>delete obj.a</code></li>
+            </ul>
+            <li><strong>Postfix:</strong> After an operand</li>
+            <ul>
+                <li><code>a++</code></li>
+                <li><code>myFunction()</code> (parentheses are an operation)</li>
+            </ul>
+        </ul>
+    
+        <h2>False Values</h2>
+        <p>The following are considered <strong>false</strong> in JavaScript:</p>
+        <pre class="mermaid">
+    graph TD
+        A[False]
+        B[0]
+        C['']
+        D[undefined]
+        E[null]
+        </pre>
+    <hr>
+    </div>
+    <div>
+        <h1>Template Literals/Template Strings</h1>
+    <p>Template literals allow you to <strong>embed expressions</strong> within a string using <code>${'...'}</code>. This feature is especially useful for creating <strong>complex strings</strong> with variables or expressions inside them.</p>
+    <h2>Example:</h2>
+    <pre><code>const hello = "hello";
+const world = "world";
+
+console.log(`${hello} ${world}`); // "hello world"</code></pre>
+    <hr>
+    </div>
+    <div>
+    <h1>Functional Expressions</h1>
+    <p>A functional expression is a function <strong>without a name</strong>.</p>
+
+    <h2>Syntax</h2>
+    <pre><code>const greet = function() {
+    console.log("Hello!");
+};</code></pre>
+
+    <h2>Functional Expression VS Declarated Function</h2>
+    <table border="1" cellpadding="5" cellspacing="0">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Declarated Function</th>
+                <th>Functional Expression</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Has a name</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+            <tr>
+                <td>Can be called autonomously</td>
+                <td>✅</td>
+                <td>❌</td>
+            </tr>
+            <tr>
+                <td>Can be assigned to a variable</td>
+                <td>✅</td>
+                <td>✅</td>
+            </tr>
+            <tr>
+                <td>Can be used as an argument in a function</td>
+                <td>✅</td>
+                <td>✅</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Benefits of Function Expressions</h2>
+    <ol>
+        <li><strong>Flexibility:</strong> Function expressions can be <strong>used as arguments to other functions (e.g., in callbacks)</strong>.</li>
+        <li><strong>Anonymous Functions:</strong> They allow the creation of unnamed functions, especially useful in places where the function doesn’t need to be referenced by name.</li>
+        <li><strong>Control over Scope:</strong> Function expressions don’t get “hoisted” like function declarations do, meaning they are only <strong>available after the line where they are defined</strong>.</li>
+    </ol>
+
+    <h1>Arrow Function</h1>
+    <p>An arrow function is a shorthand way to write a function using <code>=></code> (arrow) instead of the <code>function</code> keyword. Arrow functions <strong>are anonymous and are expressions</strong>, making them functional expressions.</p>
+
+    <h2>Types of Arrow Functions</h2>
+    <h3>1. Single Parameter and Single-line</h3>
+    <pre><code>const greet = name => `Hello, ${name}!`;</code></pre>
+
+    <h3>2. Single Parameter and Multi-line</h3>
+    <pre><code>const calculate = a => {
+    a += 5;
+    return a <= 10;
+};</code></pre>
+
+    <h3>3. Multiple Parameters and Single-line</h3>
+    <pre><code>const add = (a, b) => a + b;</code></pre>
+
+    <h3>4. Multi-line</h3>
+    <pre><code>const calculateAge = (birthYear, currentYear) => {
+    const age = currentYear - birthYear;
+    return age;
+};</code></pre>
+    <hr>
+    </div>
+    <div>
+        <h1>Erors in JavaScript</h1>
+
+        <h2>What is an Error?</h2>
+        <p>
+            An error is an <strong>unexpected event</strong> in a program that <strong>disrupts</strong> the normal <strong>flow of execution</strong>.
+            Errors can occur for various reasons, such as incorrect syntax, invalid operations, or runtime issues. JavaScript provides a
+            <strong>way to detect, handle, and respond to errors</strong> to keep the program running smoothly or to alert the user.
+        </p>
+    
+        <h2>Types of Errors</h2>
+        <ul>
+            <li><strong>Syntax</strong> Errors: Mistakes in the code structure that prevent the code from running, such as a missing bracket or <em>typo</em>.</li>
+            <li><strong>Reference</strong> Errors: Occur when a <strong>variable or function</strong> is called that <strong>hasn't been defined</strong>.</li>
+            <li><strong>Type</strong> Errors: Arise when an <strong>operation</strong> is attempted <strong>on a variable of the wrong type</strong> (e.g., calling a non-function as a function).</li>
+            <li><strong>Range</strong> Errors: Triggered when a value is <strong>out of the acceptable range</strong> (e.g., exceeding the maximum array length).</li>
+            <li><strong>Custom</strong> Errors: Errors <strong>you create</strong> in the code to <strong>enforce specific conditions or rules</strong>. Use <code>throw new Error()</code> to create a custom error.
+                <blockquote>
+                    Example: <code>throw new Error("Custom error message")</code> creates an <strong>Uncaught Error</strong> with the specified message.
+                </blockquote>
+            </li>
+        </ul>
+        <blockquote>
+            <strong>Note:</strong> After an <strong>uncaught error</strong>, the code <strong>stops its execution completely.</strong>
+        </blockquote>
+    
+        <h2>Handling Errors</h2>
+        <p>
+            JavaScript provides a structured way to handle errors using the <code>try-catch</code> mechanism, ensuring that the program doesn't crash due to unexpected issues.
+        </p>
+        <ul>
+            <li><code>try {}</code> - The block of code that needs execution.</li>
+            <li><code>catch(error) {}</code> - A block of code executed if an error occurs in the <code>try</code> block. <em>The <code>error</code> parameter contains information about the error.</em></li>
+            <li><code>finally {}</code> - A block of code that <strong>always executes</strong> after the <code>try</code> and <code>catch</code> blocks, regardless of whether an error occurred.</li>
+        </ul>
+        <blockquote>
+            <strong>Note:</strong> After <code>try-catch</code>, the code <strong>continues its execution.</strong>
+        </blockquote>
+    
+        <h2>Example</h2>
+        <pre><code>// Example of handling errors
+    try {
+        let num = 10;
+        if (num > 5) throw new Error("The number is too large!");
+    } catch (error) {
+        console.error("Caught an error:", error.message);
+    } finally {
+        console.log("This code always runs.");
+    }
+    
+    // Code continues to execute
+    console.log("Program continues after error handling.");</code></pre>
+    <hr>
+    </div>
+    <div>
+        <h1>Instructions</h1>
+        <p>Instructions are <strong>individual commands or statements</strong> that tell the computer to perform a <strong>specific action or set of actions</strong>. They’re the building blocks of code, forming the steps that a program follows to achieve a task. Instructions can be simple, like <strong>assigning a value to a variable</strong>, or complex, like <strong>looping through a data set</strong>.</p>
+        
+        <div class="mermaid">
+            %%{
+                init: {
+                'themeVariables': {
+                    'lineColor': '#949494'
+                }
+                }
+            }%%
+        graph TD
+          A[**Statement**] --> D[Returns a **value**]
+          B[Statement-Instruction]
+          B --> D
+          B --> E
+          C[**Instruction**] --> E[Executes an **action**]
+        
+        </div>
+        
+        <p><strong>Examples:</strong></p>
+        
+        <pre><code class="language-js">let a; // ⬅ Instruction
+        
+const b = 5; // ⬅ Instruction
+
+if (a > b) {
+    console.log('a is bigger!'); // ⬅ Instruction (whole 'if' statement)
+}
+
+for (let i = 0; i++; i < 5) {
+    console.log(i); // ⬅ Instruction (whole 'for' loop)
+}</code></pre>
+        
+        <p>Instructions <strong>end with a semicolon</strong> (<code>;</code>)</p>
+        
+        <blockquote>
+          Though, it is <strong>possible to not place them</strong>, for example <strong>after a block of code</strong>
+        </blockquote>
+        
+        <h2>Statement-Instruction</h2>
+        <p>Statement-Instruction is:</p>
+        <ul>
+          <li><code>abc</code></li>
+          <li><code>a = a + b;</code></li>
+          <li><code>myFn(c, d)</code></li>
+          <li><code>console.log('Hey')</code></li>
+        </ul>
+        
+        <p>just to tell, there isn't a formal "Instruction-Statement" concept does not exist.</p>
+        
+        <h2>Differencing Statement from Instruction</h2>
+        <p><em>Statements</em> can be used as <strong>an argument in a function.</strong></p>
+        
+        <pre><code class="language-js">myFn(2 + 3)
+myFn(b)
+myFn(c = c + 1)
+// -------- \\
+myFn(c = c + 1;) // Won't execute, throwing Uncaught SyntaxError
+myFn(let d;) // Won't execute, throwing Uncaught SyntaxError</code></pre>
+    <hr>
+    </div>
+    <div>
+        <h1>Arrays</h1>
+    <p>An array is an <strong>ordered collection of elements</strong> to which you can <strong>address by index</strong>. An array is <strong>an object.</strong></p>
+
+    <h2>Syntax</h2>
+    <ol>
+    <li><code>const myArray = [1, 2, 3]</code></li>
+    <li><code>const myArray2 = new Array(1, 2, 3)</code></li>
+    </ol>
+    <p>Both, on <pre><code class="language-js">console.log(myArray)</code></pre> return <code>[1, 2, 3]</code></p>
+
+    <p>But,</p>
+
+    <h3><code class="language-js">const myArray = [1, 2, 3]</code> <strong>!=</strong> <code class="language-js">const myArray = new Array(1, 2, 3)</code></h3>
+    <p>Why?</p>
+    <p>An array is an object, and an object <strong>is a reference type</strong>. <code>myArray</code> and <code>myArray2</code>, even if visually the same, <strong>references are different</strong>.</p>
+
+    <blockquote>
+    In short, <strong>the references (or links) are not the same, even if the contents are.</strong>
+    </blockquote>
+
+    <h2>Structure</h2>
+    <img src="images/myArray-structure.png" alt="Array structure diagram">
+
+    <ul>
+    <li>
+        <code>0: 1</code><br>
+        <code>1: 2</code><br>
+        <code>2: 3</code><br>
+        These are indexes. Indexes are <strong>positions</strong> that allow you to <strong>access specific elements</strong>. Indexes <strong>start at <code>0</code></strong>, meaning the <strong>first element is at index <code>0</code></strong>, the second element is at index <code>1</code>, and so on.
+    </li>
+    <li>
+        <code class="language-js">length: 3</code> - Shows that the array contains 3 elements (this is a property).
+    </li>
+    <li>
+        <code class="language-js">[[Prototype]]: Array(0)</code>, sometimes also written as <code class="language-js">__proto__: Array(0)</code>: Indicates that <code>myArray</code> is an <strong>instance</strong> of the <code>Array</code> <em><strong>prototype</strong></em>, which provides methods such as <code>push()</code>, <code>pop()</code>, <code>map()</code>, etc.
+    </li>
+    </ul>
+    <hr>
     </div>
 </body>
 </html>
