@@ -16,969 +16,626 @@
     </script>
 <script>hljs.highlightAll();</script>
 </head>
-<body>
-    <img
-        id="theme-toggle"
-        class="icon"
-        src="icons/light-mode.png"
-        alt="Color theme icon"
-        src-light="icons/light-mode.png"
-        src-dark="icons/dark-mode.png">
-    <script src="js-notes-script.js"></script>
-    <div>
-        <h1>Variables</h1>
-        <p>Variable allows <strong>repeated</strong> access to <strong>values</strong></p>
-
-        <h2>How to Name Variables</h2>
-        <ul>
-        <li><strong><u>P</u>ascal<u>C</u>ase</strong>: used for <strong>Types</strong> and <strong>Classes</strong>.</li>
-        <li><strong>DB_PASSWORD</strong>: used for values <strong>known before the launch</strong> of an app/program and are <strong>unchangable</strong>.</li>
-        <li><strong><u>c</u>amel<u>C</u>ase</strong>: used for <strong>variables</strong></li>
+<body >
+    <div class="icon-container">
+        <ul class="icon-list">
+            <li>
+                <img
+                    id="theme-toggle"
+                    class="icon"
+                    src="icons/light-mode.png"
+                    alt="Color theme icon"
+                    src-light="icons/light-mode-no-white-fill.png"
+                    src-dark="icons/dark-mode-no-dark-fill.png"
+                >
+            </li>
+            <li class="ToC">
+                <button id="toc-toggle" aria-label="Toggle Table of Contents">
+                    ☰
+                </button>
+                
+                <!-- Table of Contents Container -->
+                <nav id="table-of-contents" hidden>
+                    <ul id="toc-list"></ul>
+                </nav>
+                <script src="js-notes-script.js"></script>
+            </li>
         </ul>
-
-        <p>Variable names should be <strong>understandable</strong>. (Bad examples: <del>foo, bar, test, xyz</del>)</p>
-
-        <h2>Type system</h2>
-        <ul>
-        <li><strong>Static</strong> - Variable type is determined in code with <em>keywords</em> and <strong>is checked by compiler</strong>. Languages that use Static typing: <strong>C++, C, Java</strong></li>
-        <li><strong>Dynamic</strong> - Variable type is determined by its <em>value</em> in the <strong>moment of code execution</strong>. Languages that use Dynamic typing: <strong>JS, Python</strong></li>
-        </ul>
-
-        <h2>Object Types</h2>
-
-        <h3>Primitive Types</h3>
-        <p>These types are stored <strong>directly in the variable</strong> and hold their actual values. When you assign a primitive type to a variable, it contains the value itself. If you copy a primitive value to another variable, you create a separate copy.</p>
-        <p>These types are:</p>
-        <ul>
-        <li>String</li>
-        <li>Boolean</li>
-        <li>Number</li>
-        <li>Null</li>
-        <li>Undefined</li>
-        <li>Symbol</li>
-        </ul>
-
-        <h3>Reference Types</h3>
-        <p>These types are stored <strong>as references to their values</strong>. When you assign a reference type to a variable, the variable holds a reference (or a pointer) to the location in memory where the value is stored. If you <em>copy</em> a reference type to another variable, <strong>both variables point to the same object in memory</strong>.</p>
-        <p>These types are:</p>
-        <ul>
-        <li>Object</li>
-        <li>Array</li>
-        <li>Function</li>
-        </ul>
-
-        <h2>Variable initializing</h2>
-        <table>
-        <tr>
-            <th><code>let</code></th>
-            <th><code>const</code></th>
-            <th class="wrong"><code>var</code></th>
-        </tr>
-        <tr>
-            <td>Modifiable</td>
-            <td>Constant</td>
-            <td class="wrong">Modifiable, <b>not used</b></td>
-        </tr>
-        </table>
-
-        <p>There're two ways to initialize a variable:</p>
-        <ul>
-        <li><strong>Initializing</strong> (<code>let a</code>): permitted only for modifiable variables.</li>
-        <li><strong>Initializing and assigning</strong> (<code>const c=10</code>): the only way to initialize a constant variable. If tried to use only <strong>initializing</strong>, it will throw a <code>SyntaxError: Missing initializer in const declaration.</code></li>
-        </ul>
-        <hr>
     </div>
-    <div>
-        <h1>Objects</h1>
+    <div class="notes">
+        <div>
+            <h1>Variables</h1>
+            <p>Variable allows <strong>repeated</strong> access to <strong>values</strong></p>
 
-        <p>In JavaScript, Objects are a <em>fundamental data structure</em> and a key part of the language. Objects are used to represent complex data structures. They can be <strong>used for everything</strong> from simple data containers to more complex entities (like functions, arrays, and even custom types).</p>
-        
-        <h2>Objects can be</h2>
-        
-        <ul>
-            <li><h3>Collections of key-value pairs</h3>
-                <p>Objects are collections of <strong>key-value</strong> pairs, where each key is a property name, and each value can be any data type (e.g., numbers, strings, functions, or even other objects). The <strong>syntax</strong> is: <code>propertyName: propertyValue</code></p>
-            </li>
-            <li><h3>Almost all things in JS</h3>
-                <p>In JavaScript, <strong><em>nearly everything</em></strong> that isn’t a primitive type is an object (e.g., arrays, functions, dates, and even errors). Objects are flexible and form the foundation of many JavaScript features.</p>
-            </li>
-            <li><h3>Reference Type variables</h3>
-                <p>Objects are a type of reference variable. Unlike primitive data types, which store their values directly, objects store a reference to the location in memory where the data is kept. This means that when you assign or copy an object, you’re working with references to the same data.</p>
-            </li>
-        </ul>
-        
-        <h2>Object Creation</h2>
-        
-        <p>Object can be made through:</p>
-        
-        <ul>
-            <li><h3>Object Literal <code>{}</code></h3>
-                <p>The <strong>simplest and most common way</strong> to create an object is by using object literal syntax.</p>
-                <p><strong>Syntax:</strong></p>
-                <pre><code>let objectName = {
-    property1: value1,
-    property2: value2
-};</code></pre>
-            </li>
-            <li><h3><code>new</code></h3>
-                <p>This approach is less common but useful if you’re <strong>dynamically adding properties</strong> after creating the object.</p>
-                <p><strong>Syntax:</strong></p>
-                <pre><code>let objectName = new Object();</code></pre>
-            </li>
-        </ul>
-        
-        <p>There're more ways to make an Object, but these are most common in JS.</p>
-        
-        <p><strong>Order of elements in an Object <em>doesn't</em> matter</strong></p>
-        
-        <h2>Accessing Object Properties</h2>
-        
-        <p>In JavaScript, you can access and interact by <strong>adding</strong>, <strong>editing</strong> or <strong>removing</strong> an object's properties using two main syntaxes: <strong>Dot Notation</strong> and <strong>Bracket Notation</strong>. Each has its own use cases and advantages.</p>
-        
-        <h3>Dot Notation</h3>
-        
-        <p>Dot Notation is the simpler and more common way to access properties. It's <strong>straightforward and visually cleaner</strong>, making code easy to read.</p>
-        
-        <h4>Pros:</h4>
-        <ul>
-            <li>Dot notation is best when you know the <strong>exact name of the property</strong> and it follows standard variable naming rules (e.g., it doesn’t start with a number and <strong>contains no spaces or special characters</strong>).</li>
-            <li>It’s generally preferred <strong>when you have control over the property names</strong> because it’s more <em>concise</em> and <em>readable</em>.</li>
-        </ul>
-        
-        <h4>Cons:</h4>
-        <ul>
-            <li>Dot notation cannot be used if:
-                <ul>
-                    <li>The property name contains <strong>spaces</strong> (<code>person["first name"]</code>).</li>
-                    <li>The property name starts with a <strong>number</strong> (<code>person["123name"]</code>).</li>
-                    <li>The property name is stored in a <strong>variable</strong> and <strong>not known ahead of time</strong>.</li>
-                </ul>
-            </li>
-        </ul>
-        
-        <h3>Bracket Notation</h3>
-        
-        <p>Bracket Notation is more versatile, allowing you to access properties using dynamic expressions or property names that <strong>don’t follow standard naming conventions</strong>.</p>
-        
-        <h4>Pros:</h4>
-        <ul>
-            <li>Bracket notation is flexible and <strong>allows access to properties with names that contain spaces, special characters, or numbers</strong> (e.g., <code>person["first name"]</code> or <code>person["123name"]</code>).</li>
-            <li>It is ideal for <strong>dynamic property access</strong>, where the property name might be stored in a variable or created at runtime.</li>
-            <li>Useful when iterating over an object's properties with a loop, especially if property names are not known ahead of time.</li>
-        </ul>
-        
-        <h4>Cons:</h4>
-        <ul>
-            <li>Bracket notation can be <strong>less concise and readable</strong> than dot notation, especially when accessing simple properties.</li>
-            <li>It’s <strong>more prone to errors</strong> if the property name in quotes is misspelled, as there’s <strong>no auto-completion support</strong> in many editors.</li>
-            <li>Requires <strong>explicit quotation marks</strong> around property names, which can sometimes make the code look cluttered.</li>
-        </ul>
-        
-        <h3>Summary</h3>
-        
+            <h2>How to Name Variables</h2>
+            <ul>
+            <li><strong><u>P</u>ascal<u>C</u>ase</strong>: used for <strong>Types</strong> and <strong>Classes</strong>.</li>
+            <li><strong>DB_PASSWORD</strong>: used for values <strong>known before the launch</strong> of an app/program and are <strong>unchangable</strong>.</li>
+            <li><strong><u>c</u>amel<u>C</u>ase</strong>: used for <strong>variables</strong></li>
+            </ul>
+
+            <p>Variable names should be <strong>understandable</strong>. (Bad examples: <del>foo, bar, test, xyz</del>)</p>
+
+            <h2>Type system</h2>
+            <ul>
+            <li><strong>Static</strong> - Variable type is determined in code with <em>keywords</em> and <strong>is checked by compiler</strong>. Languages that use Static typing: <strong>C++, C, Java</strong></li>
+            <li><strong>Dynamic</strong> - Variable type is determined by its <em>value</em> in the <strong>moment of code execution</strong>. Languages that use Dynamic typing: <strong>JS, Python</strong></li>
+            </ul>
+
+            <h2>Object Types</h2>
+
+            <h3>Primitive Types</h3>
+            <p>These types are stored <strong>directly in the variable</strong> and hold their actual values. When you assign a primitive type to a variable, it contains the value itself. If you copy a primitive value to another variable, you create a separate copy.</p>
+            <p>These types are:</p>
+            <ul>
+            <li>String</li>
+            <li>Boolean</li>
+            <li>Number</li>
+            <li>Null</li>
+            <li>Undefined</li>
+            <li>Symbol</li>
+            </ul>
+
+            <h3>Reference Types</h3>
+            <p>These types are stored <strong>as references to their values</strong>. When you assign a reference type to a variable, the variable holds a reference (or a pointer) to the location in memory where the value is stored. If you <em>copy</em> a reference type to another variable, <strong>both variables point to the same object in memory</strong>.</p>
+            <p>These types are:</p>
+            <ul>
+            <li>Object</li>
+            <li>Array</li>
+            <li>Function</li>
+            </ul>
+
+            <h2>Variable initializing</h2>
+            <table>
+            <tr>
+                <th><code>let</code></th>
+                <th><code>const</code></th>
+                <th class="wrong"><code>var</code></th>
+            </tr>
+            <tr>
+                <td>Modifiable</td>
+                <td>Constant</td>
+                <td class="wrong">Modifiable, <b>not used</b></td>
+            </tr>
+            </table>
+
+            <p>There're two ways to initialize a variable:</p>
+            <ul>
+            <li><strong>Initializing</strong> (<code>let a</code>): permitted only for modifiable variables.</li>
+            <li><strong>Initializing and assigning</strong> (<code>const c=10</code>): the only way to initialize a constant variable. If tried to use only <strong>initializing</strong>, it will throw a <code>SyntaxError: Missing initializer in const declaration.</code></li>
+            </ul>
+            <hr>
+        </div>
+        <div>
+            <h1>Objects</h1>
+
+            <p>In JavaScript, Objects are a <em>fundamental data structure</em> and a key part of the language. Objects are used to represent complex data structures. They can be <strong>used for everything</strong> from simple data containers to more complex entities (like functions, arrays, and even custom types).</p>
+            
+            <h2>Objects can be</h2>
+            
+            <ul>
+                <li><h3>Collections of key-value pairs</h3>
+                    <p>Objects are collections of <strong>key-value</strong> pairs, where each key is a property name, and each value can be any data type (e.g., numbers, strings, functions, or even other objects). The <strong>syntax</strong> is: <code>propertyName: propertyValue</code></p>
+                </li>
+                <li><h3>Almost all things in JS</h3>
+                    <p>In JavaScript, <strong><em>nearly everything</em></strong> that isn’t a primitive type is an object (e.g., arrays, functions, dates, and even errors). Objects are flexible and form the foundation of many JavaScript features.</p>
+                </li>
+                <li><h3>Reference Type variables</h3>
+                    <p>Objects are a type of reference variable. Unlike primitive data types, which store their values directly, objects store a reference to the location in memory where the data is kept. This means that when you assign or copy an object, you’re working with references to the same data.</p>
+                </li>
+            </ul>
+            
+            <h2>Object Creation</h2>
+            
+            <p>Object can be made through:</p>
+            
+            <ul>
+                <li><h3>Object Literal <code>{}</code></h3>
+                    <p>The <strong>simplest and most common way</strong> to create an object is by using object literal syntax.</p>
+                    <p><strong>Syntax:</strong></p>
+                    <pre><code>let objectName = {
+        property1: value1,
+        property2: value2
+    };</code></pre>
+                </li>
+                <li><h3><code>new</code></h3>
+                    <p>This approach is less common but useful if you’re <strong>dynamically adding properties</strong> after creating the object.</p>
+                    <p><strong>Syntax:</strong></p>
+                    <pre><code>let objectName = new Object();</code></pre>
+                </li>
+            </ul>
+            
+            <p>There're more ways to make an Object, but these are most common in JS.</p>
+            
+            <p><strong>Order of elements in an Object <em>doesn't</em> matter</strong></p>
+            
+            <h2>Accessing Object Properties</h2>
+            
+            <p>In JavaScript, you can access and interact by <strong>adding</strong>, <strong>editing</strong> or <strong>removing</strong> an object's properties using two main syntaxes: <strong>Dot Notation</strong> and <strong>Bracket Notation</strong>. Each has its own use cases and advantages.</p>
+            
+            <h3>Dot Notation</h3>
+            
+            <p>Dot Notation is the simpler and more common way to access properties. It's <strong>straightforward and visually cleaner</strong>, making code easy to read.</p>
+            
+            <h4>Pros:</h4>
+            <ul>
+                <li>Dot notation is best when you know the <strong>exact name of the property</strong> and it follows standard variable naming rules (e.g., it doesn’t start with a number and <strong>contains no spaces or special characters</strong>).</li>
+                <li>It’s generally preferred <strong>when you have control over the property names</strong> because it’s more <em>concise</em> and <em>readable</em>.</li>
+            </ul>
+            
+            <h4>Cons:</h4>
+            <ul>
+                <li>Dot notation cannot be used if:
+                    <ul>
+                        <li>The property name contains <strong>spaces</strong> (<code>person["first name"]</code>).</li>
+                        <li>The property name starts with a <strong>number</strong> (<code>person["123name"]</code>).</li>
+                        <li>The property name is stored in a <strong>variable</strong> and <strong>not known ahead of time</strong>.</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Bracket Notation</h3>
+            
+            <p>Bracket Notation is more versatile, allowing you to access properties using dynamic expressions or property names that <strong>don’t follow standard naming conventions</strong>.</p>
+            
+            <h4>Pros:</h4>
+            <ul>
+                <li>Bracket notation is flexible and <strong>allows access to properties with names that contain spaces, special characters, or numbers</strong> (e.g., <code>person["first name"]</code> or <code>person["123name"]</code>).</li>
+                <li>It is ideal for <strong>dynamic property access</strong>, where the property name might be stored in a variable or created at runtime.</li>
+                <li>Useful when iterating over an object's properties with a loop, especially if property names are not known ahead of time.</li>
+            </ul>
+            
+            <h4>Cons:</h4>
+            <ul>
+                <li>Bracket notation can be <strong>less concise and readable</strong> than dot notation, especially when accessing simple properties.</li>
+                <li>It’s <strong>more prone to errors</strong> if the property name in quotes is misspelled, as there’s <strong>no auto-completion support</strong> in many editors.</li>
+                <li>Requires <strong>explicit quotation marks</strong> around property names, which can sometimes make the code look cluttered.</li>
+            </ul>
+            
+            <h3>Summary</h3>
+            
+            <table border="1">
+                <tr>
+                    <th>Feature</th>
+                    <th>Dot Notation</th>
+                    <th>Bracket Notation</th>
+                </tr>
+                <tr>
+                    <td>Simple Syntax</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Dynamic Access</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Special Characters</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Variable Properties</td>
+                    <td>❌</td>
+                    <td>✅</td>
+                </tr>
+            </table>
+            
+            <h2>Interacting with Object Properties</h2>
+            
+            <p>Here's an example object:</p>
+            
+            <pre><code>const myCity = {
+        city: 'New York',
+        popular: true,
+    }</code></pre>
+            
+            <h3>Adding</h3>
+            
+            <p>To add a new property to an object, use either dot notation or bracket notation. If the property doesn’t already exist, it will be added to the object.</p>
+            
+            <pre><code>// dot notation
+    myCity.country = 'USA'
+    // bracket notation
+    myCity['country'] = 'USA'
+    console.log(myCity) // Output: { city: "New York", popular: true, country: 'USA' }</code></pre>
+
+            <p><em>Properties are placed in the order in which they were added, unless they are assigned by numbers:</em></p>
+            
+            <pre><code>let example = {};
+    example.b = "second";
+    example.a = "first";
+    example[2] = "number two";
+    example[1] = "number one";
+
+    console.log(example); // { 1: "number one", 2: "number two", b: "second", a: "first" }</code></pre>
+            
+            <h3>Editing</h3>
+            
+            <p>Editing a property's value is the same as adding it — if the property already exists, <strong>assigning a new value will update it</strong>.</p>
+            
+            <pre><code>// dot notation
+    myCity.city = 'Las Vegas'
+    // bracket notation
+    myCity['city'] = 'Las Vegas'
+    console.log(myCity) // Output: { city: "Las Vegas", popular: true, country: 'USA' }</code></pre>
+            
+            <h3>Deleting</h3>
+            
+            <p>To remove a property, <strong>use the <code>delete</code> operator</strong>, followed by dot notation or bracket notation. This will permanently <strong>remove the property from the object</strong>.</p>
+            
+            <pre><code>// dot notation
+    delete myCity.country
+    // bracket notation
+    delete myCity['country']
+    console.log(myCity) // Output: { city: "Las Vegas", popular: true }</code></pre>
+            
+            <h3>Use of variables</h3>
+            
+            <p>If there're variables outside the object that have <strong>exact same name as your property, it can be simplified</strong>.</p>
+            
+            <p>Instead of this:</p>
+            
+            <pre><code>const name = 'Alex'
+    const postsQty = 23
+            
+    const userProfile = {
+        name: name,
+        postsQty: postsQty
+    }</code></pre>
+            
+            <p>It can be written as:</p>
+            
+            <pre><code>const userProfile = { name, postsQty }</code></pre>
+            
+            <h3>Nested Objects</h3>
+            
+            <p>You can create objects inside other objects to build a structure.</p>
+            
+            <pre><code>const userProfile = {
+        name: 'Alex',
+        address: {
+            street: '123 Main St',
+            city: 'Somewhere'
+            }
+    };
+
+    console.log(userProfile.address.city) // Output: 'Somewhere'</code></pre>
+            
+        </div>
+        <div>
+            <h1>Global Objects</h1>
+
+        <p>In JavaScript, global objects are objects that provide a <strong>global scope</strong> where properties, functions, and variables can be accessed from anywhere in the code. The global object <strong>varies depending on the environment</strong> (like a web browser or Node.js). Here’s a look at the main global objects and how they work:</p>
+
+        <h2><code>window</code></h2>
+
+        <p><strong>In web browsers</strong>, the global object is called <code>window</code>. It <strong>represents the browser's window</strong> in which your script runs. The window object provides a range of properties and methods for <strong>controlling the browser, interacting with the Document Object Model (DOM), and accessing global variables and functions.</strong></p>
+
+        <h2><code>global</code></h2>
+
+        <p><strong>In Node.js</strong>, the global object is called <code>global</code>. Unlike browsers, <strong>Node.js does not have a window object</strong>. The global object in Node.js has similar functionality, allowing you to <strong>define variables, functions, or classes that should be accessible across the entire environment.</strong></p>
+
+        <h2><code>globalThis</code></h2>
+
+        <p>Introduced in <strong>ECMAScript 2020</strong>, <code>globalThis</code> provides a <strong>universal</strong> way to access the global object <strong>across different environments</strong> (like browsers, Node.js, and others). <code>globalThis</code> refers to the global object regardless of where the code runs, making it a more standardized way to write cross-platform JavaScript.</p>
+
+        <p>Using <code>globalThis</code> is particularly helpful <strong>when writing code that runs in both browsers and Node.js</strong>, as it provides a consistent way to access the global scope across different environments.</p>
+
+        <h2>Properties</h2>
+
+        <p>It is possible to call properties of global objects <strong>without needing to use dot notation with <code>window</code>, <code>global</code>, or <code>globalThis</code>.</strong></p>
+
         <table border="1">
-            <tr>
-                <th>Feature</th>
-                <th>Dot Notation</th>
-                <th>Bracket Notation</th>
-            </tr>
-            <tr>
-                <td>Simple Syntax</td>
-                <td>✅</td>
-                <td>❌</td>
-            </tr>
-            <tr>
-                <td>Dynamic Access</td>
-                <td>❌</td>
-                <td>✅</td>
-            </tr>
-            <tr>
-                <td>Special Characters</td>
-                <td>❌</td>
-                <td>✅</td>
-            </tr>
-            <tr>
-                <td>Variable Properties</td>
-                <td>❌</td>
-                <td>✅</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Full Syntax</th>
+                    <th>Simplified Syntax</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><pre><code>window.console.log(10)</code></pre><br><pre><code>global.console.log(10)</code></pre><br><pre><code>globalThis.console.log(10)</code></pre></td>
+                    <td><pre><code>console.log(10)</code></pre></td>
+                </tr>
+            </tbody>
         </table>
-        
-        <h2>Interacting with Object Properties</h2>
-        
-        <p>Here's an example object:</p>
-        
-        <pre><code>const myCity = {
-    city: 'New York',
-    popular: true,
-}</code></pre>
-        
-        <h3>Adding</h3>
-        
-        <p>To add a new property to an object, use either dot notation or bracket notation. If the property doesn’t already exist, it will be added to the object.</p>
-        
-        <pre><code>// dot notation
-myCity.country = 'USA'
-// bracket notation
-myCity['country'] = 'USA'
-console.log(myCity) // Output: { city: "New York", popular: true, country: 'USA' }</code></pre>
+        <hr>
 
-        <p><em>Properties are placed in the order in which they were added, unless they are assigned by numbers:</em></p>
-        
-        <pre><code>let example = {};
-example.b = "second";
-example.a = "first";
-example[2] = "number two";
-example[1] = "number one";
+        </div>
+        <div>
+            <h1>Methods</h1>
 
-console.log(example); // { 1: "number one", 2: "number two", b: "second", a: "first" }</code></pre>
-        
-        <h3>Editing</h3>
-        
-        <p>Editing a property's value is the same as adding it — if the property already exists, <strong>assigning a new value will update it</strong>.</p>
-        
-        <pre><code>// dot notation
-myCity.city = 'Las Vegas'
-// bracket notation
-myCity['city'] = 'Las Vegas'
-console.log(myCity) // Output: { city: "Las Vegas", popular: true, country: 'USA' }</code></pre>
-        
-        <h3>Deleting</h3>
-        
-        <p>To remove a property, <strong>use the <code>delete</code> operator</strong>, followed by dot notation or bracket notation. This will permanently <strong>remove the property from the object</strong>.</p>
-        
-        <pre><code>// dot notation
-delete myCity.country
-// bracket notation
-delete myCity['country']
-console.log(myCity) // Output: { city: "Las Vegas", popular: true }</code></pre>
-        
-        <h3>Use of variables</h3>
-        
-        <p>If there're variables outside the object that have <strong>exact same name as your property, it can be simplified</strong>.</p>
-        
-        <p>Instead of this:</p>
-        
-        <pre><code>const name = 'Alex'
-const postsQty = 23
-        
-const userProfile = {
-    name: name,
-    postsQty: postsQty
-}</code></pre>
-        
-        <p>It can be written as:</p>
-        
-        <pre><code>const userProfile = { name, postsQty }</code></pre>
-        
-        <h3>Nested Objects</h3>
-        
-        <p>You can create objects inside other objects to build a structure.</p>
-        
-        <pre><code>const userProfile = {
-    name: 'Alex',
-    address: {
-        street: '123 Main St',
-        city: 'Somewhere'
+            <p>A method is a <strong>property</strong> of an object, which's value is a <strong>function</strong>.</p>
+
+            <h2>Methods VS Properties</h2>
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th><code>myCity.city</code></th>
+                        <th><code>myCity.cityGreeting()</code></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Accessing value</strong> of a property*</td>
+                        <td><strong>Calling</strong> a function</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><em>*Accessing value</em> of a <strong>method</strong> returns its <strong>structure</strong>.</p>
+
+            <blockquote>
+                <p>If a property that <strong>isn't a method/function is called</strong>, an <strong>error</strong> is thrown: <code>TypeError: ... is not a function</code></p>
+            </blockquote>
+
+            <hr>
+        </div>
+        <div>
+            <h1>JSON</h1>
+
+            <p>JSON (<strong><u>J</u>ava <u>S</u>cript <u>O</u>bject <u>N</u>otation</strong>) is a format of <strong>exchange data between computers</strong> over the Web.</p>
+
+            <p>Examples of data represented in JSON:</p>
+
+            <ul>
+                <li><em>CSS style tables</em></li>
+                <li><em>Images</em></li>
+                <li><em>Text files</em></li>
+            </ul>
+
+            <h2>JSON Notation</h2>
+
+            <h3>Object Notation</h3>
+
+            <p>JSON objects are commonly used in JavaScript to create objects and are suitable for <strong><em>human</em></strong> readability. They are often referred to as <strong>parsed JSON</strong> when processed in JavaScript.</p>
+
+            <p><strong>Syntax Example:</strong></p>
+
+            <pre><code>{
+        "userId":1,
+        "id":1,
+        "title":"Test Title",
+        "Status":{
+            "completed": false
         }
-};
+    }</code></pre>
 
-console.log(userProfile.address.city) // Output: 'Somewhere'</code></pre>
-        
-    </div>
-    <div>
-        <h1>Global Objects</h1>
+            <h3>String Notation</h3>
 
-    <p>In JavaScript, global objects are objects that provide a <strong>global scope</strong> where properties, functions, and variables can be accessed from anywhere in the code. The global object <strong>varies depending on the environment</strong> (like a web browser or Node.js). Here’s a look at the main global objects and how they work:</p>
+            <p>JSON in string form is typically used for <strong><em>computer</em></strong> readability. It is often referred to as <strong>stringified JSON</strong>. It is often the format that is transferred between systems, and it must be parsed into an object for use in JavaScript.</p>
 
-    <h2><code>window</code></h2>
+            <p><strong>Syntax:</strong></p>
 
-    <p><strong>In web browsers</strong>, the global object is called <code>window</code>. It <strong>represents the browser's window</strong> in which your script runs. The window object provides a range of properties and methods for <strong>controlling the browser, interacting with the Document Object Model (DOM), and accessing global variables and functions.</strong></p>
+            <pre><code>{"userId":1, "id":1, "title":"Test Title", "Status":{"completed": false}}</code></pre>
 
-    <h2><code>global</code></h2>
+            <h2>Methods</h2>
 
-    <p><strong>In Node.js</strong>, the global object is called <code>global</code>. Unlike browsers, <strong>Node.js does not have a window object</strong>. The global object in Node.js has similar functionality, allowing you to <strong>define variables, functions, or classes that should be accessible across the entire environment.</strong></p>
+            <ul>
+                <li><code>JSON.parse()</code>: Transforms <strong>JSON string</strong> into a <strong>JS object</strong>.</li>
+                <li><code>JSON.stringify()</code>: Transforms <strong>JS object</strong> into a <strong>JSON string</strong>.</li>
+            </ul>
+            <hr>
+        </div>
+        <div>
+            <h1>Mutations in JS</h1>
 
-    <h2><code>globalThis</code></h2>
+            <p>In JavaScript, <strong>mutation</strong> refers to <strong>changing the state or value of an object or array</strong>. Unlike <strong>primitive values</strong> (such as numbers, strings, and booleans), which are <strong>immutable</strong> (meaning they cannot be changed directly), <strong>objects and arrays are mutable</strong>, meaning their properties and elements <strong>can be altered</strong>.</p>
 
-    <p>Introduced in <strong>ECMAScript 2020</strong>, <code>globalThis</code> provides a <strong>universal</strong> way to access the global object <strong>across different environments</strong> (like browsers, Node.js, and others). <code>globalThis</code> refers to the global object regardless of where the code runs, making it a more standardized way to write cross-platform JavaScript.</p>
+            <h2>Mutating Object</h2>
 
-    <p>Using <code>globalThis</code> is particularly helpful <strong>when writing code that runs in both browsers and Node.js</strong>, as it provides a consistent way to access the global scope across different environments.</p>
+            <p>In an object, properties and elements can be <strong>mutated by editing, adding or removing</strong> properties.</p>
 
-    <h2>Properties</h2>
+            <h3>Examples</h3>
 
-    <p>It is possible to call properties of global objects <strong>without needing to use dot notation with <code>window</code>, <code>global</code>, or <code>globalThis</code>.</strong></p>
+            <h4><em>Editing</em> property mutation:</h4>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Full Syntax</th>
-                <th>Simplified Syntax</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><pre><code>window.console.log(10)</code></pre><br><pre><code>global.console.log(10)</code></pre><br><pre><code>globalThis.console.log(10)</code></pre></td>
-                <td><pre><code>console.log(10)</code></pre></td>
-            </tr>
-        </tbody>
-    </table>
-    <hr>
+            <pre><code>const person = { name: 'Alice', age: 25 };
+    person.age = 26;  // Mutating the 'age' property of the object
+    console.log(person.age);  // Output: 26 </code></pre>
 
-    </div>
-    <div>
-        <h1>Methods</h1>
+            <h4><em>Adding</em> and <em>removing</em> property mutation:</h4>
 
-        <p>A method is a <strong>property</strong> of an object, which's value is a <strong>function</strong>.</p>
+            <pre><code>const user = { name: 'John' };
+    user.age = 30;  // Adding a new property to the object
+    console.log(user);  // Output: { name: 'John', age: 30 }
 
-        <h2>Methods VS Properties</h2>
+    delete user.name;  // Removing a property from the object
+    console.log(user);  // Output: { age: 30 } </code></pre>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th><code>myCity.city</code></th>
-                    <th><code>myCity.cityGreeting()</code></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Accessing value</strong> of a property*</td>
-                    <td><strong>Calling</strong> a function</td>
-                </tr>
-            </tbody>
-        </table>
+            <h2>Mutating Array</h2>
 
-        <p><em>*Accessing value</em> of a <strong>method</strong> returns its <strong>structure</strong>.</p>
+            <p>Same as in an object, array can be <strong>mutated by editing, adding and removing</strong> elements and changing array's <strong>length</strong>.</p>
 
-        <blockquote>
-            <p>If a property that <strong>isn't a method/function is called</strong>, an <strong>error</strong> is thrown: <code>TypeError: ... is not a function</code></p>
-        </blockquote>
+            <h3>Examples</h3>
 
+            <h4><em>Editing</em> and <em>adding</em> property mutation:</h4>
+
+            <pre><code>const numbers = [1, 2, 3];
+    numbers[0] = 10;  // Mutating the first element of the array
+    console.log(numbers);  // Output: [10, 2, 3]
+
+    numbers.push(4);  // Adding an element to the array
+    console.log(numbers);  // Output: [10, 2, 3, 4]</code></pre>
+
+            <h4>Editing array <em>length</em> mutation:</h4>
+
+            <pre><code>const fruits = ['apple', 'banana', 'cherry'];
+    fruits.length = 2;  // Mutating the array by shortening it
+    console.log(fruits);  // Output: ['apple', 'banana']</code></pre>
+
+            <h2>Mutation Functions</h2>
+
+            <p>In JavaScript, when you pass an object or an array to a <strong>function</strong>, the function has <strong>access to the original object or array</strong> (because objects and arrays are <strong>passed by reference</strong>). If the function mutates the object or array, the <strong>changes will be reflected outside the function as well.</strong></p>
+
+            <h3>Example:</h3>
+
+            <pre><code>function updateName(person) {
+        person.name = 'Bob';  // Mutating the object
+    }
+
+    const person = { name: 'Alice' };
+    updateName(person);
+    console.log(person.name);  // Output: Bob</code></pre>
+
+            <h2>Avoiding Mutations</h2>
+
+            <p>Example object for this section:</p>
+
+            <pre><code>const person = {
+        name: 'Bob',
+        age: 21
+    };</code></pre>
+
+            <h3><code>Object.assign({}, person)</code></h3>
+            <p><code>assign</code> - creates a <strong>new</strong> object.<br>
+            <code>{}</code> - <strong>writes the value</strong>.<br>
+            <code>person</code> - object that needs to be copied.</p>
+
+            <blockquote>
+                <p>Con: <strong>Embedded references are still copied.</strong></p>
+            </blockquote>
+
+            <h3><code>= {...person}</code></h3>
+            <p><code>{______}</code> - creates a new object.<br>
+            <code>...</code> - <strong>`Spread`</strong> operator, separating object on properties<br>
+            <code>person</code> - object that needs to be copied.</p>
+
+            <blockquote>
+                <p>Con: <strong>Embedded references are still copied.</strong></p>
+            </blockquote>
+
+            <h3><code>JSON.parse(JSON.stringify(person))</code></h3>
+            <p><code>JSON.stringify(person)</code> - Converts the <code>person</code> <em>object to a JSON string</em>.<br>
+            <code>JSON.parse()</code> - Parses the <em>JSON string back into a <strong>new</strong> object</em>.</p>
+
+            <blockquote>
+                <p>Pro: Embedded references are <strong>NOT</strong> copied.<br>
+                Con: <strong>Does not preserve functions or non-JSON data types</strong> (like <code>undefined</code>, <code>RegExp</code>, or <code>Date</code>).</p>
+            </blockquote>
+
+            <h2>Summary</h2>
+
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Avoid method</th>
+                        <th>Embedded references?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Object.assign({}, person)</code></td>
+                        <td>☑️ (Shallow copy)</td>
+                    </tr>
+                    <tr>
+                        <td><code>= {...person}</code></td>
+                        <td>☑️ (Shallow copy)</td>
+                    </tr>
+                    <tr>
+                        <td><code>JSON.parse(JSON.stringify(person))</code></td>
+                        <td>❎ (Deep copy, no functions or non-JSON data)</td>
+                    </tr>
+                </tbody>
+            </table>
         <hr>
-    </div>
-    <div>
-        <h1>JSON</h1>
-
-        <p>JSON (<strong><u>J</u>ava <u>S</u>cript <u>O</u>bject <u>N</u>otation</strong>) is a format of <strong>exchange data between computers</strong> over the Web.</p>
-
-        <p>Examples of data represented in JSON:</p>
-
+        </div>
+        <div>
+            <h1>Functions</h1>
+        <p>Function is a <strong>block of code</strong> that can be used <strong>repeatedly</strong>. <strong>Function is an object</strong></p>
+        <p>Functions can be:</p>
         <ul>
-            <li><em>CSS style tables</em></li>
-            <li><em>Images</em></li>
-            <li><em>Text files</em></li>
+            <li>Named/<em>Anonymous</em></li>
+            <li><strong>Assigned to a variable</strong></li>
+            <li><strong>Argument to another function</strong></li>
+            <li><em>Method</em></li>
         </ul>
 
-        <h2>JSON Notation</h2>
-
-        <h3>Object Notation</h3>
-
-        <p>JSON objects are commonly used in JavaScript to create objects and are suitable for <strong><em>human</em></strong> readability. They are often referred to as <strong>parsed JSON</strong> when processed in JavaScript.</p>
-
-        <p><strong>Syntax Example:</strong></p>
-
-        <pre><code>{
-    "userId":1,
-    "id":1,
-    "title":"Test Title",
-    "Status":{
-        "completed": false
-    }
-}</code></pre>
-
-        <h3>String Notation</h3>
-
-        <p>JSON in string form is typically used for <strong><em>computer</em></strong> readability. It is often referred to as <strong>stringified JSON</strong>. It is often the format that is transferred between systems, and it must be parsed into an object for use in JavaScript.</p>
-
-        <p><strong>Syntax:</strong></p>
-
-        <pre><code>{"userId":1, "id":1, "title":"Test Title", "Status":{"completed": false}}</code></pre>
-
-        <h2>Methods</h2>
-
-        <ul>
-            <li><code>JSON.parse()</code>: Transforms <strong>JSON string</strong> into a <strong>JS object</strong>.</li>
-            <li><code>JSON.stringify()</code>: Transforms <strong>JS object</strong> into a <strong>JSON string</strong>.</li>
-        </ul>
-        <hr>
-    </div>
-    <div>
-        <h1>Mutations in JS</h1>
-
-        <p>In JavaScript, <strong>mutation</strong> refers to <strong>changing the state or value of an object or array</strong>. Unlike <strong>primitive values</strong> (such as numbers, strings, and booleans), which are <strong>immutable</strong> (meaning they cannot be changed directly), <strong>objects and arrays are mutable</strong>, meaning their properties and elements <strong>can be altered</strong>.</p>
-
-        <h2>Mutating Object</h2>
-
-        <p>In an object, properties and elements can be <strong>mutated by editing, adding or removing</strong> properties.</p>
-
-        <h3>Examples</h3>
-
-        <h4><em>Editing</em> property mutation:</h4>
-
-        <pre><code>const person = { name: 'Alice', age: 25 };
-person.age = 26;  // Mutating the 'age' property of the object
-console.log(person.age);  // Output: 26 </code></pre>
-
-        <h4><em>Adding</em> and <em>removing</em> property mutation:</h4>
-
-        <pre><code>const user = { name: 'John' };
-user.age = 30;  // Adding a new property to the object
-console.log(user);  // Output: { name: 'John', age: 30 }
-
-delete user.name;  // Removing a property from the object
-console.log(user);  // Output: { age: 30 } </code></pre>
-
-        <h2>Mutating Array</h2>
-
-        <p>Same as in an object, array can be <strong>mutated by editing, adding and removing</strong> elements and changing array's <strong>length</strong>.</p>
-
-        <h3>Examples</h3>
-
-        <h4><em>Editing</em> and <em>adding</em> property mutation:</h4>
-
-        <pre><code>const numbers = [1, 2, 3];
-numbers[0] = 10;  // Mutating the first element of the array
-console.log(numbers);  // Output: [10, 2, 3]
-
-numbers.push(4);  // Adding an element to the array
-console.log(numbers);  // Output: [10, 2, 3, 4]</code></pre>
-
-        <h4>Editing array <em>length</em> mutation:</h4>
-
-        <pre><code>const fruits = ['apple', 'banana', 'cherry'];
-fruits.length = 2;  // Mutating the array by shortening it
-console.log(fruits);  // Output: ['apple', 'banana']</code></pre>
-
-        <h2>Mutation Functions</h2>
-
-        <p>In JavaScript, when you pass an object or an array to a <strong>function</strong>, the function has <strong>access to the original object or array</strong> (because objects and arrays are <strong>passed by reference</strong>). If the function mutates the object or array, the <strong>changes will be reflected outside the function as well.</strong></p>
-
-        <h3>Example:</h3>
-
-        <pre><code>function updateName(person) {
-    person.name = 'Bob';  // Mutating the object
-}
-
-const person = { name: 'Alice' };
-updateName(person);
-console.log(person.name);  // Output: Bob</code></pre>
-
-        <h2>Avoiding Mutations</h2>
-
-        <p>Example object for this section:</p>
-
-        <pre><code>const person = {
-    name: 'Bob',
-    age: 21
-};</code></pre>
-
-        <h3><code>Object.assign({}, person)</code></h3>
-        <p><code>assign</code> - creates a <strong>new</strong> object.<br>
-        <code>{}</code> - <strong>writes the value</strong>.<br>
-        <code>person</code> - object that needs to be copied.</p>
-
-        <blockquote>
-            <p>Con: <strong>Embedded references are still copied.</strong></p>
-        </blockquote>
-
-        <h3><code>= {...person}</code></h3>
-        <p><code>{______}</code> - creates a new object.<br>
-        <code>...</code> - <strong>`Spread`</strong> operator, separating object on properties<br>
-        <code>person</code> - object that needs to be copied.</p>
-
-        <blockquote>
-            <p>Con: <strong>Embedded references are still copied.</strong></p>
-        </blockquote>
-
-        <h3><code>JSON.parse(JSON.stringify(person))</code></h3>
-        <p><code>JSON.stringify(person)</code> - Converts the <code>person</code> <em>object to a JSON string</em>.<br>
-        <code>JSON.parse()</code> - Parses the <em>JSON string back into a <strong>new</strong> object</em>.</p>
-
-        <blockquote>
-            <p>Pro: Embedded references are <strong>NOT</strong> copied.<br>
-            Con: <strong>Does not preserve functions or non-JSON data types</strong> (like <code>undefined</code>, <code>RegExp</code>, or <code>Date</code>).</p>
-        </blockquote>
-
-        <h2>Summary</h2>
-
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Avoid method</th>
-                    <th>Embedded references?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><code>Object.assign({}, person)</code></td>
-                    <td>☑️ (Shallow copy)</td>
-                </tr>
-                <tr>
-                    <td><code>= {...person}</code></td>
-                    <td>☑️ (Shallow copy)</td>
-                </tr>
-                <tr>
-                    <td><code>JSON.parse(JSON.stringify(person))</code></td>
-                    <td>❎ (Deep copy, no functions or non-JSON data)</td>
-                </tr>
-            </tbody>
-        </table>
-    <hr>
-    </div>
-    <div>
-        <h1>Functions</h1>
-    <p>Function is a <strong>block of code</strong> that can be used <strong>repeatedly</strong>. <strong>Function is an object</strong></p>
-    <p>Functions can be:</p>
-    <ul>
-        <li>Named/<em>Anonymous</em></li>
-        <li><strong>Assigned to a variable</strong></li>
-        <li><strong>Argument to another function</strong></li>
-        <li><em>Method</em></li>
-    </ul>
-
-    <h3>Syntax/Structure</h3>
-    <pre>
-<code>function myFn(a, b) {
-  let c;
-  a = a + 1;
-  c = a + b;
-  return c;
-}
-</code>
-    </pre>
-    <ul>
-        <li><code>myFn</code> - name of the function in <strong>camelCase</strong>.</li>
-        <li><code>a, b</code> - <strong>parameters</strong>, variables in the functions.</li>
-        <li><code>return c</code> - <strong>result</strong>.</li>
-    </ul>
-
-    <p><strong>Warning:</strong></p>
-    <ul>
-        <li><strong>Function returns undefined if it does not contain a return.</strong></li>
-        <li><strong>It is <em>not recommended</em> to mutate external objects inside functions.</strong></li>
-    </ul>
-
-    <h2>Avoiding Mutation Inside Function</h2>
-    <p>Mutation can be avoided by creating an object's copy inside the function and returning the copy as a result.</p>
-
-    <p><strong>Examples:</strong></p>
-    <p><strong><em>INCORRECT</em></strong> (Mutating the original object):</p>
-    <pre>
-<code>function increaseAge(person) {
-  person.age += 1;
-  return person;
-}
-</code>
-    </pre>
-
-    <p><strong><em>CORRECT</em></strong> (Creating a copy to avoid mutation):</p>
-    <pre>
-<code>function increaseAge(person) {
-  const personUpdate = { ...person };
-  personUpdate.age += 1;
-  return personUpdate;
-}
-</code>
-    </pre>
-
-    <h2><em>Callback</em> Functions</h2>
-    <p>A <strong>callback function</strong> is <strong>a function that is passed as an argument to another function</strong> and is executed after the completion of some other operation.</p>
-
-    <p><strong>Example:</strong></p>
-    <pre>
-<code>function anotherFunction() {
-  console.log("Some code here");
-}
-function fnWithCallback(callbackFunction) {
-  callbackFunction();
-}
-fnWithCallback(anotherFunction);
-</code>
-    </pre>
-
-    <h2>Rules of Working with Functions</h2>
-    <pre class="mermaid">
-        graph TD
-        %%{
-            init: {
-            'themeVariables': {
-                'lineColor': '#949494'
-            }
-            }
-        }%%
-            A[**1. Naming** function depending on its task]
-            B[**2. One function** does **one task**]
-            B --> D[**single purpose**]
-            C[**3. Not** recommended to **modify external objects**]
-        style D fill:#3e79bd, stroke: #000000, stroke-width:2px
-    </pre>
-    <hr>
-    </div>
-    <div>
-        <h1>Scopes</h1>
-    <p>Scopes define borders of <strong>availability of a variable</strong>.</p>
-    <pre class="mermaid">
-        %%{
-            init: {
-            'themeVariables': {
-                'lineColor': '#949494'
-            }
-            }
-        }%%
-    graph TD
-    A[**Global** Scope]
-    B[**Function** Scope]
-    C[**Block** Scope]
-    A --> B --> C 
-    style A fill:#c4a9b5,stroke:#000000,stroke-width:2px
-    style B fill:#bfb071,stroke:#000000,stroke-width:2px
-    style C fill:#87abb0,stroke:#000000,stroke-width:2px
-    </pre>
-
-    <h2>Global</h2>
-    <p>Global scope and variables created there are <strong>known throughout all the code.</strong></p>
-
-    <h2>Function</h2>
-    <p>Function scope is... well, in a function and <strong>known inside the function.</strong> <code>var</code> variables are function-scoped.</p>
-
-    <h2>Block</h2>
-    <p>Block scope is between <code>{}</code>. <code>let</code> and <code>const</code> are block-scoped, meaning they are only accessible inside the block where they are declared.</p>
-    <blockquote>
-        Function scope is a block scope, since in its syntax, <code>function(){}</code>, there're <code>{}</code>.
-    </blockquote>
-    <p><strong>Statement above is false. Here's an example:</strong></p>
-    <pre><code>function testFunction() {
-    var x = 10;
-    if (true) {
-        var y = 20; // 'var' is function-scoped, so 'y' is accessible throughout the function
-    }
-    console.log(x); // 10
-    console.log(y); // 20 (accessible here, because 'y' is function-scoped, not block-scoped)
-    }
-    </code></pre>
-    <p>In the above example, both <code>x</code> and <code>y</code> are function-scoped, <strong>even though <code>y</code> is declared inside a block</strong> (the <code>if</code> statement).</p>
-
-    <h3>Example</h3>
-    <pre><code>let a;
-    let b;
-
-    function myFn() {
+        <h3>Syntax/Structure</h3>
+        <pre>
+    <code>function myFn(a, b) {
     let c;
+    a = a + 1;
+    c = a + b;
+    return c;
     }
-    </code></pre>
-    <ul>
-        <li><code>myFn</code> knows <code>a</code>, <code>b</code>, <u><code>c</code></u></li>
-        <li><code>global</code> knows <code>a</code>, <code>b</code>, <em>_</em></li>
-    </ul>
-
-    <pre class="mermaid">
-    graph TD
-    %%{
-        init: {
-        'themeVariables': {
-            'lineColor': '#949494'
-        }
-        }
-    }%%
-    A[**Global**]
-    B[**myFn**]
-    B --> |a?| A
-    A --> |a| B
-    style A fill:#9c848f,stroke:#000000,stroke-width:2px
-    style B fill:#7c9da1,stroke:#000000,stroke-width:2px
-    </pre>
-
-    <pre class="mermaid">
-    graph TD
-    %%{
-        init: {
-        'themeVariables': {
-            'lineColor': '#949494'
-        }
-        }
-    }%%
-    A[**Global**]
-    B[**myFn**]
-    A --x |c?| B
-    style A fill:#9c848f,stroke:#000000,stroke-width:2px
-    style B fill:#7c9da1,stroke:#000000,stroke-width:2px
-    </pre>
-
-    <h2>Rules of Working with Variables</h2>
-    <pre class="mermaid">
-    graph TD
-    A[**1. Initialize** variable before use]
-    B[**2.** Try to use **const everywhere if possible**]
-    C[**3. Not** recommended to **modify external variables inside functions**]
-    </pre>
-
-    <h2>'use strict'</h2>
-    <p>To avoid changing variables outside functions, use <code>'use strict'</code> syntax.</p>
-
-    <p><strong>Bad example</strong>, where variable is changed inside the function:</p>
-    <pre><code>function myFn() {
-    a = true;
-    console.log(a);
-    }
-    myFn();
-
-    console.log(a); // true
     </code>
-    </pre>
-
-    <p><strong><code>'use strict'</code> example:</strong></p>
-    <pre><code>'use strict';
-    function myFn() {
-    a = true; // ReferenceError:
-    console.log(a);
-    }
-    myFn();
-
-    console.log(a); // Normal value of a
-    </code></pre>
-    </div>
-    <div>
-        <h1>Operators</h1>
-        <p>An operator is a <strong>built-in</strong> function or <em>symbol</em> that performs operations on one or more values. Operators are essential to JavaScript for <strong>calculations, comparisons, logical checks, and value assignments</strong>.</p>
-        <p>There are many operators, grouped into <strong>5 types</strong>:</p>
-        <ul>
-            <li>Arithmetic</li>
-            <li>Comparison</li>
-            <li>Logical</li>
-            <li>Assignment</li>
-            <li>Text</li>
-        </ul>
-    
-        <h2>Arithmetic Operators</h2>
-        <ul>
-            <li><code>+</code> : Addition</li>
-            <li><code>-</code> : Subtraction</li>
-            <li><code>*</code> : Multiplication</li>
-            <li><code>/</code> : Division</li>
-        </ul>
-    
-        <h2>Comparison Operators</h2>
-        <ul>
-            <li><code>==</code> : Equal to</li>
-            <li><code>===</code> : <em>Strict</em> Equal to</li>
-            <li><code>!=</code> : <em>Not</em> Equal to</li>
-            <li><code>!==</code> : <em>Strict Not</em> Equal to</li>
-            <li><code>&lt;</code> : Less than</li>
-            <li><code>&gt;</code> : Greater than</li>
-            <li><code>&lt;=</code> : Less than or equal to</li>
-            <li><code>&gt;=</code> : Greater than or equal to</li>
-        </ul>
-    
-        <h2>Logical Operators</h2>
-        <ul>
-            <li><code>!</code> : Not</li>
-            <li><code>&&</code> : And</li>
-            <li><code>||</code>: Or</li>
-        </ul>
-        <blockquote>
-            <strong>Note:</strong> <code>!</code> returns a boolean, while <code>&&</code> and <code>||</code> return the value of one of the operands.
-        </blockquote>
-    
-        <h2>Assignment Operators</h2>
-        <ul>
-            <li><code>=</code> : Assignment</li>
-            <li><code>+=</code> : Addition and assignment</li>
-            <li><code>-=</code> : Subtraction and assignment</li>
-            <li><code>*=</code> : Multiplication and assignment</li>
-            <li><code>/=</code> : Division and assignment</li>
-        </ul>
-    
-        <h2>Text/String Operators</h2>
-        <ul>
-            <li><code>typeof</code> : Checks data type of variable</li>
-            <li><code>instanceof</code> : Checks if a variable is an instance of a specific class</li>
-            <li><code>new</code> : Creates a new instance</li>
-            <li><code>delete</code> : Deletes an instance</li>
-            <li><code>...</code> : Spread/separate object on properties</li>
-        </ul>
-    
-        <h2>Operands</h2>
-        <p>Operands are values on which the operations make changes.</p>
-    
-        <h3>Types of Operators</h3>
-        <ul>
-            <li><strong>Unary</strong> operators: Operate on <strong>one</strong> operand.</li>
-            <li><strong>Binary</strong> operators: Operate on <strong>two</strong> operands.</li>
-            <li><strong>Ternary</strong> operators: Operate on <strong>three</strong> operands.</li>
-        </ul>
-    
-        <h2>Ways of Writing</h2>
-        <ul>
-            <li><strong>Infix:</strong> Between operands</li>
-            <ul>
-                <li><code>a = true</code></li>
-                <li><code>a + b</code></li>
-            </ul>
-            <li><strong>Prefix:</strong> Before an operand</li>
-            <ul>
-                <li><code>++a</code></li>
-                <li><code>delete obj.a</code></li>
-            </ul>
-            <li><strong>Postfix:</strong> After an operand</li>
-            <ul>
-                <li><code>a++</code></li>
-                <li><code>myFunction()</code> (parentheses are an operation)</li>
-            </ul>
-        </ul>
-    
-        <h2>False Values</h2>
-        <p>The following are considered <strong>false</strong> in JavaScript:</p>
-        <pre class="mermaid">
-    graph TD
-        A[False]
-        B[0]
-        C['']
-        D[undefined]
-        E[null]
         </pre>
-    <hr>
-    </div>
-    <div>
-        <h1>Template Literals/Template Strings</h1>
-    <p>Template literals allow you to <strong>embed expressions</strong> within a string using <code>${'...'}</code>. This feature is especially useful for creating <strong>complex strings</strong> with variables or expressions inside them.</p>
-    <h2>Example:</h2>
-    <pre><code>const hello = "hello";
-const world = "world";
-
-console.log(`${hello} ${world}`); // "hello world"</code></pre>
-    <hr>
-    </div>
-    <div>
-    <h1>Functional Expressions</h1>
-    <p>A functional expression is a function <strong>without a name</strong>.</p>
-
-    <h2>Syntax</h2>
-    <pre><code>const greet = function() {
-    console.log("Hello!");
-};</code></pre>
-
-    <h2>Functional Expression VS Declarated Function</h2>
-    <table border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Declarated Function</th>
-                <th>Functional Expression</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Has a name</td>
-                <td>✅</td>
-                <td>❌</td>
-            </tr>
-            <tr>
-                <td>Can be called autonomously</td>
-                <td>✅</td>
-                <td>❌</td>
-            </tr>
-            <tr>
-                <td>Can be assigned to a variable</td>
-                <td>✅</td>
-                <td>✅</td>
-            </tr>
-            <tr>
-                <td>Can be used as an argument in a function</td>
-                <td>✅</td>
-                <td>✅</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h2>Benefits of Function Expressions</h2>
-    <ol>
-        <li><strong>Flexibility:</strong> Function expressions can be <strong>used as arguments to other functions (e.g., in callbacks)</strong>.</li>
-        <li><strong>Anonymous Functions:</strong> They allow the creation of unnamed functions, especially useful in places where the function doesn’t need to be referenced by name.</li>
-        <li><strong>Control over Scope:</strong> Function expressions don’t get “hoisted” like function declarations do, meaning they are only <strong>available after the line where they are defined</strong>.</li>
-    </ol>
-
-    <h1>Arrow Function</h1>
-    <p>An arrow function is a shorthand way to write a function using <code>=></code> (arrow) instead of the <code>function</code> keyword. Arrow functions <strong>are anonymous and are expressions</strong>, making them functional expressions.</p>
-
-    <h2>Types of Arrow Functions</h2>
-    <h3>1. Single Parameter and Single-line</h3>
-    <pre><code>const greet = name => `Hello, ${name}!`;</code></pre>
-
-    <h3>2. Single Parameter and Multi-line</h3>
-    <pre><code>const calculate = a => {
-    a += 5;
-    return a <= 10;
-};</code></pre>
-
-    <h3>3. Multiple Parameters and Single-line</h3>
-    <pre><code>const add = (a, b) => a + b;</code></pre>
-
-    <h3>4. Multi-line</h3>
-    <pre><code>const calculateAge = (birthYear, currentYear) => {
-    const age = currentYear - birthYear;
-    return age;
-};</code></pre>
-    <hr>
-    </div>
-    <div>
-        <h1>Erors in JavaScript</h1>
-
-        <h2>What is an Error?</h2>
-        <p>
-            An error is an <strong>unexpected event</strong> in a program that <strong>disrupts</strong> the normal <strong>flow of execution</strong>.
-            Errors can occur for various reasons, such as incorrect syntax, invalid operations, or runtime issues. JavaScript provides a
-            <strong>way to detect, handle, and respond to errors</strong> to keep the program running smoothly or to alert the user.
-        </p>
-    
-        <h2>Types of Errors</h2>
         <ul>
-            <li><strong>Syntax</strong> Errors: Mistakes in the code structure that prevent the code from running, such as a missing bracket or <em>typo</em>.</li>
-            <li><strong>Reference</strong> Errors: Occur when a <strong>variable or function</strong> is called that <strong>hasn't been defined</strong>.</li>
-            <li><strong>Type</strong> Errors: Arise when an <strong>operation</strong> is attempted <strong>on a variable of the wrong type</strong> (e.g., calling a non-function as a function).</li>
-            <li><strong>Range</strong> Errors: Triggered when a value is <strong>out of the acceptable range</strong> (e.g., exceeding the maximum array length).</li>
-            <li><strong>Custom</strong> Errors: Errors <strong>you create</strong> in the code to <strong>enforce specific conditions or rules</strong>. Use <code>throw new Error()</code> to create a custom error.
-                <blockquote>
-                    Example: <code>throw new Error("Custom error message")</code> creates an <strong>Uncaught Error</strong> with the specified message.
-                </blockquote>
-            </li>
+            <li><code>myFn</code> - name of the function in <strong>camelCase</strong>.</li>
+            <li><code>a, b</code> - <strong>parameters</strong>, variables in the functions.</li>
+            <li><code>return c</code> - <strong>result</strong>.</li>
         </ul>
-        <blockquote>
-            <strong>Note:</strong> After an <strong>uncaught error</strong>, the code <strong>stops its execution completely.</strong>
-        </blockquote>
-    
-        <h2>Handling Errors</h2>
-        <p>
-            JavaScript provides a structured way to handle errors using the <code>try-catch</code> mechanism, ensuring that the program doesn't crash due to unexpected issues.
-        </p>
+
+        <p><strong>Warning:</strong></p>
         <ul>
-            <li><code>try {}</code> - The block of code that needs execution.</li>
-            <li><code>catch(error) {}</code> - A block of code executed if an error occurs in the <code>try</code> block. <em>The <code>error</code> parameter contains information about the error.</em></li>
-            <li><code>finally {}</code> - A block of code that <strong>always executes</strong> after the <code>try</code> and <code>catch</code> blocks, regardless of whether an error occurred.</li>
+            <li><strong>Function returns undefined if it does not contain a return.</strong></li>
+            <li><strong>It is <em>not recommended</em> to mutate external objects inside functions.</strong></li>
         </ul>
-        <blockquote>
-            <strong>Note:</strong> After <code>try-catch</code>, the code <strong>continues its execution.</strong>
-        </blockquote>
-    
-        <h2>Example</h2>
-        <pre><code>// Example of handling errors
-    try {
-        let num = 10;
-        if (num > 5) throw new Error("The number is too large!");
-    } catch (error) {
-        console.error("Caught an error:", error.message);
-    } finally {
-        console.log("This code always runs.");
+
+        <h2>Avoiding Mutation Inside Function</h2>
+        <p>Mutation can be avoided by creating an object's copy inside the function and returning the copy as a result.</p>
+
+        <p><strong>Examples:</strong></p>
+        <p><strong><em>INCORRECT</em></strong> (Mutating the original object):</p>
+        <pre>
+    <code>function increaseAge(person) {
+    person.age += 1;
+    return person;
     }
-    
-    // Code continues to execute
-    console.log("Program continues after error handling.");</code></pre>
-    <hr>
-    </div>
-    <div>
-        <h1>Instructions</h1>
-        <p>Instructions are <strong>individual commands or statements</strong> that tell the computer to perform a <strong>specific action or set of actions</strong>. They’re the building blocks of code, forming the steps that a program follows to achieve a task. Instructions can be simple, like <strong>assigning a value to a variable</strong>, or complex, like <strong>looping through a data set</strong>.</p>
-        
-        <div class="mermaid">
+    </code>
+        </pre>
+
+        <p><strong><em>CORRECT</em></strong> (Creating a copy to avoid mutation):</p>
+        <pre>
+    <code>function increaseAge(person) {
+    const personUpdate = { ...person };
+    personUpdate.age += 1;
+    return personUpdate;
+    }
+    </code>
+        </pre>
+
+        <h2><em>Callback</em> Functions</h2>
+        <p>A <strong>callback function</strong> is <strong>a function that is passed as an argument to another function</strong> and is executed after the completion of some other operation.</p>
+
+        <p><strong>Example:</strong></p>
+        <pre>
+    <code>function anotherFunction() {
+    console.log("Some code here");
+    }
+    function fnWithCallback(callbackFunction) {
+    callbackFunction();
+    }
+    fnWithCallback(anotherFunction);
+    </code>
+        </pre>
+
+        <h2>Rules of Working with Functions</h2>
+        <pre class="mermaid">
+            graph TD
+            %%{
+                init: {
+                'themeVariables': {
+                    'lineColor': '#949494'
+                }
+                }
+            }%%
+                A[**1. Naming** function depending on its task]
+                B[**2. One function** does **one task**]
+                B --> D[**single purpose**]
+                C[**3. Not** recommended to **modify external objects**]
+            style D fill:#3e79bd, stroke: #000000, stroke-width:2px
+        </pre>
+        <hr>
+        </div>
+        <div>
+            <h1>Scopes</h1>
+        <p>Scopes define borders of <strong>availability of a variable</strong>.</p>
+        <pre class="mermaid">
             %%{
                 init: {
                 'themeVariables': {
@@ -987,95 +644,457 @@ console.log(`${hello} ${world}`); // "hello world"</code></pre>
                 }
             }%%
         graph TD
-          A[**Statement**] --> D[Returns a **value**]
-          B[Statement-Instruction]
-          B --> D
-          B --> E
-          C[**Instruction**] --> E[Executes an **action**]
-        
-        </div>
-        
-        <p><strong>Examples:</strong></p>
-        
-        <pre><code class="language-js">let a; // ⬅ Instruction
-        
-const b = 5; // ⬅ Instruction
+        A[**Global** Scope]
+        B[**Function** Scope]
+        C[**Block** Scope]
+        A --> B --> C 
+        style A fill:#c4a9b5,stroke:#000000,stroke-width:2px
+        style B fill:#bfb071,stroke:#000000,stroke-width:2px
+        style C fill:#87abb0,stroke:#000000,stroke-width:2px
+        </pre>
 
-if (a > b) {
-    console.log('a is bigger!'); // ⬅ Instruction (whole 'if' statement)
-}
+        <h2>Global</h2>
+        <p>Global scope and variables created there are <strong>known throughout all the code.</strong></p>
 
-for (let i = 0; i++; i < 5) {
-    console.log(i); // ⬅ Instruction (whole 'for' loop)
-}</code></pre>
-        
-        <p>Instructions <strong>end with a semicolon</strong> (<code>;</code>)</p>
-        
+        <h2>Function</h2>
+        <p>Function scope is... well, in a function and <strong>known inside the function.</strong> <code>var</code> variables are function-scoped.</p>
+
+        <h2>Block</h2>
+        <p>Block scope is between <code>{}</code>. <code>let</code> and <code>const</code> are block-scoped, meaning they are only accessible inside the block where they are declared.</p>
         <blockquote>
-          Though, it is <strong>possible to not place them</strong>, for example <strong>after a block of code</strong>
+            Function scope is a block scope, since in its syntax, <code>function(){}</code>, there're <code>{}</code>.
         </blockquote>
-        
-        <h2>Statement-Instruction</h2>
-        <p>Statement-Instruction is:</p>
+        <p><strong>Statement above is false. Here's an example:</strong></p>
+        <pre><code>function testFunction() {
+        var x = 10;
+        if (true) {
+            var y = 20; // 'var' is function-scoped, so 'y' is accessible throughout the function
+        }
+        console.log(x); // 10
+        console.log(y); // 20 (accessible here, because 'y' is function-scoped, not block-scoped)
+        }
+        </code></pre>
+        <p>In the above example, both <code>x</code> and <code>y</code> are function-scoped, <strong>even though <code>y</code> is declared inside a block</strong> (the <code>if</code> statement).</p>
+
+        <h3>Example</h3>
+        <pre><code>let a;
+        let b;
+
+        function myFn() {
+        let c;
+        }
+        </code></pre>
         <ul>
-          <li><code>abc</code></li>
-          <li><code>a = a + b;</code></li>
-          <li><code>myFn(c, d)</code></li>
-          <li><code>console.log('Hey')</code></li>
+            <li><code>myFn</code> knows <code>a</code>, <code>b</code>, <u><code>c</code></u></li>
+            <li><code>global</code> knows <code>a</code>, <code>b</code>, <em>_</em></li>
         </ul>
+
+        <pre class="mermaid">
+        graph TD
+        %%{
+            init: {
+            'themeVariables': {
+                'lineColor': '#949494'
+            }
+            }
+        }%%
+        A[**Global**]
+        B[**myFn**]
+        B --> |a?| A
+        A --> |a| B
+        style A fill:#8f3f63,stroke:#000000,stroke-width:2px
+        style B fill:#4c939c,stroke:#000000,stroke-width:2px
+        </pre>
+
+        <pre class="mermaid">
+        graph TD
+        %%{
+            init: {
+            'themeVariables': {
+                'lineColor': '#949494'
+            }
+            }
+        }%%
+        A[**Global**]
+        B[**myFn**]
+        A --x |c?| B
+        style A fill:#8f3f63,stroke:#000000,stroke-width:2px
+        style B fill:#4c939c,stroke:#000000,stroke-width:2px
+        </pre>
+
+        <h2>Rules of Working with Variables</h2>
+        <pre class="mermaid">
+        graph TD
+        A[**1. Initialize** variable before use]
+        B[**2.** Try to use **const everywhere if possible**]
+        C[**3. Not** recommended to **modify external variables inside functions**]
+        </pre>
+
+        <h2>'use strict'</h2>
+        <p>To avoid changing variables outside functions, use <code>'use strict'</code> syntax.</p>
+
+        <p><strong>Bad example</strong>, where variable is changed inside the function:</p>
+        <pre><code>function myFn() {
+        a = true;
+        console.log(a);
+        }
+        myFn();
+
+        console.log(a); // true
+        </code>
+        </pre>
+
+        <p><strong><code>'use strict'</code> example:</strong></p>
+        <pre><code>'use strict';
+        function myFn() {
+        a = true; // ReferenceError:
+        console.log(a);
+        }
+        myFn();
+
+        console.log(a); // Normal value of a
+        </code></pre>
+        </div>
+        <div>
+            <h1>Operators</h1>
+            <p>An operator is a <strong>built-in</strong> function or <em>symbol</em> that performs operations on one or more values. Operators are essential to JavaScript for <strong>calculations, comparisons, logical checks, and value assignments</strong>.</p>
+            <p>There are many operators, grouped into <strong>5 types</strong>:</p>
+            <ul>
+                <li>Arithmetic</li>
+                <li>Comparison</li>
+                <li>Logical</li>
+                <li>Assignment</li>
+                <li>Text</li>
+            </ul>
         
-        <p>just to tell, there isn't a formal "Instruction-Statement" concept does not exist.</p>
+            <h2>Arithmetic Operators</h2>
+            <ul>
+                <li><code>+</code> : Addition</li>
+                <li><code>-</code> : Subtraction</li>
+                <li><code>*</code> : Multiplication</li>
+                <li><code>/</code> : Division</li>
+            </ul>
         
-        <h2>Differencing Statement from Instruction</h2>
-        <p><em>Statements</em> can be used as <strong>an argument in a function.</strong></p>
+            <h2>Comparison Operators</h2>
+            <ul>
+                <li><code>==</code> : Equal to</li>
+                <li><code>===</code> : <em>Strict</em> Equal to</li>
+                <li><code>!=</code> : <em>Not</em> Equal to</li>
+                <li><code>!==</code> : <em>Strict Not</em> Equal to</li>
+                <li><code>&lt;</code> : Less than</li>
+                <li><code>&gt;</code> : Greater than</li>
+                <li><code>&lt;=</code> : Less than or equal to</li>
+                <li><code>&gt;=</code> : Greater than or equal to</li>
+            </ul>
         
-        <pre><code class="language-js">myFn(2 + 3)
-myFn(b)
-myFn(c = c + 1)
-// -------- \\
-myFn(c = c + 1;) // Won't execute, throwing Uncaught SyntaxError
-myFn(let d;) // Won't execute, throwing Uncaught SyntaxError</code></pre>
-    <hr>
-    </div>
-    <div>
-        <h1>Arrays</h1>
-    <p>An array is an <strong>ordered collection of elements</strong> to which you can <strong>address by index</strong>. An array is <strong>an object.</strong></p>
+            <h2>Logical Operators</h2>
+            <ul>
+                <li><code>!</code> : Not</li>
+                <li><code>&&</code> : And</li>
+                <li><code>||</code>: Or</li>
+            </ul>
+            <blockquote>
+                <strong>Note:</strong> <code>!</code> returns a boolean, while <code>&&</code> and <code>||</code> return the value of one of the operands.
+            </blockquote>
+        
+            <h2>Assignment Operators</h2>
+            <ul>
+                <li><code>=</code> : Assignment</li>
+                <li><code>+=</code> : Addition and assignment</li>
+                <li><code>-=</code> : Subtraction and assignment</li>
+                <li><code>*=</code> : Multiplication and assignment</li>
+                <li><code>/=</code> : Division and assignment</li>
+            </ul>
+        
+            <h2>Text/String Operators</h2>
+            <ul>
+                <li><code>typeof</code> : Checks data type of variable</li>
+                <li><code>instanceof</code> : Checks if a variable is an instance of a specific class</li>
+                <li><code>new</code> : Creates a new instance</li>
+                <li><code>delete</code> : Deletes an instance</li>
+                <li><code>...</code> : Spread/separate object on properties</li>
+            </ul>
+        
+            <h2>Operands</h2>
+            <p>Operands are values on which the operations make changes.</p>
+        
+            <h3>Types of Operators</h3>
+            <ul>
+                <li><strong>Unary</strong> operators: Operate on <strong>one</strong> operand.</li>
+                <li><strong>Binary</strong> operators: Operate on <strong>two</strong> operands.</li>
+                <li><strong>Ternary</strong> operators: Operate on <strong>three</strong> operands.</li>
+            </ul>
+        
+            <h2>Ways of Writing</h2>
+            <ul>
+                <li><strong>Infix:</strong> Between operands</li>
+                <ul>
+                    <li><code>a = true</code></li>
+                    <li><code>a + b</code></li>
+                </ul>
+                <li><strong>Prefix:</strong> Before an operand</li>
+                <ul>
+                    <li><code>++a</code></li>
+                    <li><code>delete obj.a</code></li>
+                </ul>
+                <li><strong>Postfix:</strong> After an operand</li>
+                <ul>
+                    <li><code>a++</code></li>
+                    <li><code>myFunction()</code> (parentheses are an operation)</li>
+                </ul>
+            </ul>
+        
+            <h2>False Values</h2>
+            <p>The following are considered <strong>false</strong> in JavaScript:</p>
+            <pre class="mermaid">
+        graph TD
+            A[False]
+            B[0]
+            C['']
+            D[undefined]
+            E[null]
+            </pre>
+        <hr>
+        </div>
+        <div>
+            <h1>Template Literals/Template Strings</h1>
+        <p>Template literals allow you to <strong>embed expressions</strong> within a string using <code>${'...'}</code>. This feature is especially useful for creating <strong>complex strings</strong> with variables or expressions inside them.</p>
+        <h2>Example:</h2>
+        <pre><code>const hello = "hello";
+    const world = "world";
 
-    <h2>Syntax</h2>
-    <ol>
-    <li><code>const myArray = [1, 2, 3]</code></li>
-    <li><code>const myArray2 = new Array(1, 2, 3)</code></li>
-    </ol>
-    <p>Both, on <pre><code class="language-js">console.log(myArray)</code></pre> return <code>[1, 2, 3]</code></p>
+    console.log(`${hello} ${world}`); // "hello world"</code></pre>
+        <hr>
+        </div>
+        <div>
+        <h1>Functional Expressions</h1>
+        <p>A functional expression is a function <strong>without a name</strong>.</p>
 
-    <p>But,</p>
+        <h2>Syntax</h2>
+        <pre><code>const greet = function() {
+        console.log("Hello!");
+    };</code></pre>
 
-    <h3><code class="language-js">const myArray = [1, 2, 3]</code> <strong>!=</strong> <code class="language-js">const myArray = new Array(1, 2, 3)</code></h3>
-    <p>Why?</p>
-    <p>An array is an object, and an object <strong>is a reference type</strong>. <code>myArray</code> and <code>myArray2</code>, even if visually the same, <strong>references are different</strong>.</p>
+        <h2>Functional Expression VS Declarated Function</h2>
+        <table border="1" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Declarated Function</th>
+                    <th>Functional Expression</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Has a name</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Can be called autonomously</td>
+                    <td>✅</td>
+                    <td>❌</td>
+                </tr>
+                <tr>
+                    <td>Can be assigned to a variable</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+                <tr>
+                    <td>Can be used as an argument in a function</td>
+                    <td>✅</td>
+                    <td>✅</td>
+                </tr>
+            </tbody>
+        </table>
 
-    <blockquote>
-    In short, <strong>the references (or links) are not the same, even if the contents are.</strong>
-    </blockquote>
+        <h2>Benefits of Function Expressions</h2>
+        <ol>
+            <li><strong>Flexibility:</strong> Function expressions can be <strong>used as arguments to other functions (e.g., in callbacks)</strong>.</li>
+            <li><strong>Anonymous Functions:</strong> They allow the creation of unnamed functions, especially useful in places where the function doesn’t need to be referenced by name.</li>
+            <li><strong>Control over Scope:</strong> Function expressions don’t get “hoisted” like function declarations do, meaning they are only <strong>available after the line where they are defined</strong>.</li>
+        </ol>
 
-    <h2>Structure</h2>
-    <img src="images/myArray-structure.png" alt="Array structure diagram">
+        <h1>Arrow Function</h1>
+        <p>An arrow function is a shorthand way to write a function using <code>=></code> (arrow) instead of the <code>function</code> keyword. Arrow functions <strong>are anonymous and are expressions</strong>, making them functional expressions.</p>
 
-    <ul>
-    <li>
-        <code>0: 1</code><br>
-        <code>1: 2</code><br>
-        <code>2: 3</code><br>
-        These are indexes. Indexes are <strong>positions</strong> that allow you to <strong>access specific elements</strong>. Indexes <strong>start at <code>0</code></strong>, meaning the <strong>first element is at index <code>0</code></strong>, the second element is at index <code>1</code>, and so on.
-    </li>
-    <li>
-        <code class="language-js">length: 3</code> - Shows that the array contains 3 elements (this is a property).
-    </li>
-    <li>
-        <code class="language-js">[[Prototype]]: Array(0)</code>, sometimes also written as <code class="language-js">__proto__: Array(0)</code>: Indicates that <code>myArray</code> is an <strong>instance</strong> of the <code>Array</code> <em><strong>prototype</strong></em>, which provides methods such as <code>push()</code>, <code>pop()</code>, <code>map()</code>, etc.
-    </li>
-    </ul>
-    <hr>
+        <h2>Types of Arrow Functions</h2>
+        <h3>1. Single Parameter and Single-line</h3>
+        <pre><code>const greet = name => `Hello, ${name}!`;</code></pre>
+
+        <h3>2. Single Parameter and Multi-line</h3>
+        <pre><code>const calculate = a => {
+        a += 5;
+        return a <= 10;
+    };</code></pre>
+
+        <h3>3. Multiple Parameters and Single-line</h3>
+        <pre><code>const add = (a, b) => a + b;</code></pre>
+
+        <h3>4. Multi-line</h3>
+        <pre><code>const calculateAge = (birthYear, currentYear) => {
+        const age = currentYear - birthYear;
+        return age;
+    };</code></pre>
+        <hr>
+        </div>
+        <div>
+            <h1>Erors in JavaScript</h1>
+
+            <h2>What is an Error?</h2>
+            <p>
+                An error is an <strong>unexpected event</strong> in a program that <strong>disrupts</strong> the normal <strong>flow of execution</strong>.
+                Errors can occur for various reasons, such as incorrect syntax, invalid operations, or runtime issues. JavaScript provides a
+                <strong>way to detect, handle, and respond to errors</strong> to keep the program running smoothly or to alert the user.
+            </p>
+        
+            <h2>Types of Errors</h2>
+            <ul>
+                <li><strong>Syntax</strong> Errors: Mistakes in the code structure that prevent the code from running, such as a missing bracket or <em>typo</em>.</li>
+                <li><strong>Reference</strong> Errors: Occur when a <strong>variable or function</strong> is called that <strong>hasn't been defined</strong>.</li>
+                <li><strong>Type</strong> Errors: Arise when an <strong>operation</strong> is attempted <strong>on a variable of the wrong type</strong> (e.g., calling a non-function as a function).</li>
+                <li><strong>Range</strong> Errors: Triggered when a value is <strong>out of the acceptable range</strong> (e.g., exceeding the maximum array length).</li>
+                <li><strong>Custom</strong> Errors: Errors <strong>you create</strong> in the code to <strong>enforce specific conditions or rules</strong>. Use <code>throw new Error()</code> to create a custom error.
+                    <blockquote>
+                        Example: <code>throw new Error("Custom error message")</code> creates an <strong>Uncaught Error</strong> with the specified message.
+                    </blockquote>
+                </li>
+            </ul>
+            <blockquote>
+                <strong>Note:</strong> After an <strong>uncaught error</strong>, the code <strong>stops its execution completely.</strong>
+            </blockquote>
+        
+            <h2>Handling Errors</h2>
+            <p>
+                JavaScript provides a structured way to handle errors using the <code>try-catch</code> mechanism, ensuring that the program doesn't crash due to unexpected issues.
+            </p>
+            <ul>
+                <li><code>try {}</code> - The block of code that needs execution.</li>
+                <li><code>catch(error) {}</code> - A block of code executed if an error occurs in the <code>try</code> block. <em>The <code>error</code> parameter contains information about the error.</em></li>
+                <li><code>finally {}</code> - A block of code that <strong>always executes</strong> after the <code>try</code> and <code>catch</code> blocks, regardless of whether an error occurred.</li>
+            </ul>
+            <blockquote>
+                <strong>Note:</strong> After <code>try-catch</code>, the code <strong>continues its execution.</strong>
+            </blockquote>
+        
+            <h2>Example</h2>
+            <pre><code>// Example of handling errors
+        try {
+            let num = 10;
+            if (num > 5) throw new Error("The number is too large!");
+        } catch (error) {
+            console.error("Caught an error:", error.message);
+        } finally {
+            console.log("This code always runs.");
+        }
+        
+        // Code continues to execute
+        console.log("Program continues after error handling.");</code></pre>
+        <hr>
+        </div>
+        <div>
+            <h1>Instructions</h1>
+            <p>Instructions are <strong>individual commands or statements</strong> that tell the computer to perform a <strong>specific action or set of actions</strong>. They’re the building blocks of code, forming the steps that a program follows to achieve a task. Instructions can be simple, like <strong>assigning a value to a variable</strong>, or complex, like <strong>looping through a data set</strong>.</p>
+            
+            <div class="mermaid">
+                %%{
+                    init: {
+                    'themeVariables': {
+                        'lineColor': '#949494'
+                    }
+                    }
+                }%%
+            graph TD
+            A[**Statement**] --> D[Returns a **value**]
+            B[Statement-Instruction]
+            B --> D
+            B --> E
+            C[**Instruction**] --> E[Executes an **action**]
+            
+            </div>
+            
+            <p><strong>Examples:</strong></p>
+            
+            <pre><code class="language-js">let a; // ⬅ Instruction
+            
+    const b = 5; // ⬅ Instruction
+
+    if (a > b) {
+        console.log('a is bigger!'); // ⬅ Instruction (whole 'if' statement)
+    }
+
+    for (let i = 0; i++; i < 5) {
+        console.log(i); // ⬅ Instruction (whole 'for' loop)
+    }</code></pre>
+            
+            <p>Instructions <strong>end with a semicolon</strong> (<code>;</code>)</p>
+            
+            <blockquote>
+            Though, it is <strong>possible to not place them</strong>, for example <strong>after a block of code</strong>
+            </blockquote>
+            
+            <h2>Statement-Instruction</h2>
+            <p>Statement-Instruction is:</p>
+            <ul>
+            <li><code>abc</code></li>
+            <li><code>a = a + b;</code></li>
+            <li><code>myFn(c, d)</code></li>
+            <li><code>console.log('Hey')</code></li>
+            </ul>
+            
+            <p>just to tell, there isn't a formal "Instruction-Statement" concept does not exist.</p>
+            
+            <h2>Differencing Statement from Instruction</h2>
+            <p><em>Statements</em> can be used as <strong>an argument in a function.</strong></p>
+            
+            <pre><code class="language-js">myFn(2 + 3)
+    myFn(b)
+    myFn(c = c + 1)
+    // -------- \\
+    myFn(c = c + 1;) // Won't execute, throwing Uncaught SyntaxError
+    myFn(let d;) // Won't execute, throwing Uncaught SyntaxError</code></pre>
+        <hr>
+        </div>
+        <div>
+            <h1>Arrays</h1>
+        <p>An array is an <strong>ordered collection of elements</strong> to which you can <strong>address by index</strong>. An array is <strong>an object.</strong></p>
+
+        <h2>Syntax</h2>
+        <ol>
+        <li><code>const myArray = [1, 2, 3]</code></li>
+        <li><code>const myArray2 = new Array(1, 2, 3)</code></li>
+        </ol>
+        <p>Both, on <pre><code class="language-js">console.log(myArray)</code></pre> return <code>[1, 2, 3]</code></p>
+
+        <p>But,</p>
+
+        <h3><code class="language-js">const myArray = [1, 2, 3]</code> <strong>!=</strong> <code class="language-js">const myArray = new Array(1, 2, 3)</code></h3>
+        <p>Why?</p>
+        <p>An array is an object, and an object <strong>is a reference type</strong>. <code>myArray</code> and <code>myArray2</code>, even if visually the same, <strong>references are different</strong>.</p>
+
+        <blockquote>
+        In short, <strong>the references (or links) are not the same, even if the contents are.</strong>
+        </blockquote>
+
+        <h2>Structure</h2>
+        <img src="images/myArray-structure.png" alt="Array structure diagram">
+
+        <ul>
+        <li>
+            <code>0: 1</code><br>
+            <code>1: 2</code><br>
+            <code>2: 3</code><br>
+            These are indexes. Indexes are <strong>positions</strong> that allow you to <strong>access specific elements</strong>. Indexes <strong>start at <code>0</code></strong>, meaning the <strong>first element is at index <code>0</code></strong>, the second element is at index <code>1</code>, and so on.
+        </li>
+        <li>
+            <code class="language-js">length: 3</code> - Shows that the array contains 3 elements (this is a property).
+        </li>
+        <li>
+            <code class="language-js">[[Prototype]]: Array(0)</code>, sometimes also written as <code class="language-js">__proto__: Array(0)</code>: Indicates that <code>myArray</code> is an <strong>instance</strong> of the <code>Array</code> <em><strong>prototype</strong></em>, which provides methods such as <code>push()</code>, <code>pop()</code>, <code>map()</code>, etc.
+        </li>
+        </ul>
+        <hr>
+        </div>
     </div>
 </body>
 </html>

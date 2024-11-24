@@ -2,19 +2,25 @@
 :root {
     --background-color: rgb(227, 227, 227);
     --code-background-color: rgba(163, 163, 163, 0.416);
-    --blockquote: rgb(232, 237, 159);
+    --toc-background-color: rgba(205, 205, 205, 0.25);
     --color: #2b2b2b;
     --code-color: rgb(116, 116, 116);
     --code-ponctuation-color: rgb(0, 0, 0);
+    --toc-color: rgb(0, 0, 0);
+    --toc-color-highlight: rgb(0, 36, 167);
+    --blockquote: rgb(232, 237, 159);
 }
 /* Dark Mode */
 [theme="dark"] {
     --background-color: rgb(43, 43, 43);
     --code-background-color: rgba(163, 163, 163, 0.416);
-    --blockquote: rgb(86, 88, 59);
+    --toc-background-color: rgb(64, 64, 64, 0.25);
     --color: rgba(227, 227, 227, 0.909);
     --code-color: rgb(205, 205, 205);
     --code-ponctuation-color: rgb(255, 255, 255);
+    --toc-color: rgb(255, 255, 255);
+    --toc-color-highlight: rgb(184, 201, 255);
+    --blockquote: rgb(86, 88, 59);
 }
 
 .wrong {
@@ -34,6 +40,7 @@ div{
 hr {
     border: 2px solid var(--color);
 }
+
 table, th, td {
     width: 500px;
     padding: 10px;
@@ -43,19 +50,72 @@ table, th, td {
 th, td {
     background-color: rgba(0, 255, 251, 0.3);
 }
+
+/* Container for icons */
+.icon-container {
+    position: fixed;        /* Fixes the container to the screen */
+    top: 10px;              /* Distance from the top */
+    right: 10px;            /* Distance from the right */
+    display: flex;          /* Flexbox for layout */
+    flex-direction: column; /* Stack icons horizontally */
+    align-items: flex-end;  /* Align items to the right */
+    gap: 10px;              /* Adds space between icons */
+    z-index: 1000;          /* Ensures it stays above other elements */
+}
+/* Icon list styling */
+.icon-list {
+    list-style: none;       /* Removes bullets */
+    padding: 0;             /* Removes default padding */
+    margin: 0;              /* Removes default margin */
+    display: flex;          /* Arranges items horizontally */
+    gap: 20px;              /* Adds spacing between items */
+}
+
+/* Theme toggle icon specific styling */
 #theme-toggle {
     transform: scale(0.2);
     z-index: 1000;
     position: fixed;
     padding: 10px 1px;
-    top: -50px;
+    top: -54px;
     right: 1px;
+}
+
+/* Table of Contents toggle button specific styling */
+#toc-toggle {
+    cursor: pointer;        /* Makes cursor a pointer for interactivity */
+    padding: 5px;           /* Adds some padding for consistency */
+    background-color: var(--toc-background-color); /* Optional background for buttons */
+    color: var(--color);           /* Text/icon color */
+    border: none;           /* Removes borders */
+    border-radius: 5px;     /* Rounded edges */
+    font-size: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+#table-of-contents {
+    background-color: var(--toc-background-color);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+}
+/* Default Link Style */
+#table-of-contents a {
+    text-decoration: none; /* Removes underline */
+    color: var(--toc-color);        /* Default link color */
+    font-weight: bold;     /* Makes links bold */
+    transition: color 0.5s ease; /* Smooth transition for color change */
+    transition: padding 0.5s ease; /* Smooth transition for color change */
+    transition: font-size 0.5s ease; /* Smooth transition for color change */
+
+}
+/* Hover State */
+#table-of-contents a:hover {
+    padding: 5px;
+    font-size: 20px;
+    color: var(--toc-color-highlight);        /* Darker blue for hover */
+    text-decoration: none;
 }
 blockquote {
     background-color: var(--blockquote);
 }
-
-
 /* === JS Code Block Styles === */
     pre code.hljs{
         display:block;

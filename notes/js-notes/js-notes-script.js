@@ -37,3 +37,45 @@ function setLightMode() {
     // Fix the typo
     btn.src = btn.getAttribute("src-light");
 }
+
+// Grab elements
+const tocToggle = document.getElementById('toc-toggle');
+const tocContainer = document.getElementById('table-of-contents');
+const tocList = document.getElementById('toc-list');
+
+// Toggle ToC visibility
+tocToggle.addEventListener('click', () => {
+    const isHidden = tocContainer.hasAttribute('hidden');
+    if (isHidden) {
+        tocContainer.removeAttribute('hidden');
+        populateTableOfContents();
+    } else {
+        tocContainer.setAttribute('hidden', true);
+    }
+});
+
+// Populate ToC dynamically
+function populateTableOfContents() {
+    if (tocList.innerHTML.trim()) return; // Avoid duplicating list
+
+    // Find all headings (h1)
+    const headings = document.querySelectorAll('h1');
+    headings.forEach((heading) => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.textContent = heading.textContent;
+        a.href = `#${heading.id || createHeadingId(heading)}`;
+        li.appendChild(a);
+        tocList.appendChild(li);
+    });
+}
+
+// Generate unique IDs for headings if missing
+function createHeadingId(heading) {
+    const id = heading.textContent
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+    heading.id = id;
+    return id;
+}
