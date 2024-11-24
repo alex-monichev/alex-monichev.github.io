@@ -53,6 +53,21 @@ tocToggle.addEventListener('click', () => {
         tocContainer.setAttribute('hidden', true);
     }
 });
+// Array of possible "jump to" messages
+const jumpMessages = [
+    "Go to",
+    "Check out",
+    "Dive into",
+    "Explore",
+    "Learn about",
+    "Discover",
+    "Jump to"
+];
+
+// Helper function to get a random message
+function getRandomJumpMessage() {
+    return jumpMessages[Math.floor(Math.random() * jumpMessages.length)];
+}
 
 // Populate ToC dynamically
 function populateTableOfContents() {
@@ -65,6 +80,14 @@ function populateTableOfContents() {
         const a = document.createElement('a');
         a.textContent = heading.textContent;
         a.href = `#${heading.id || createHeadingId(heading)}`;
+        // Use a random message if no title is present
+        const randomMessage = getRandomJumpMessage();
+        // Extract the title attribute from the heading, if present
+        if (heading.hasAttribute('title')) {
+            a.setAttribute('title', heading.getAttribute('title'));
+        } else {
+            a.setAttribute('title', `${randomMessage} ${heading.textContent}`);
+        }
         li.appendChild(a);
         tocList.appendChild(li);
     });
